@@ -37,6 +37,7 @@
 ## About The Project
 
 ![Screen Shot](https://media.discordapp.net/attachments/1161753809719152824/1202704892502745128/image.png?ex=65ce6d37&is=65bbf837&hm=330030c54da2cf607df703718dbb32426b3d0e7e3ca1831fd913d755b28c9000&=&format=webp&quality=lossless)
+![image](https://github.com/99Anvar99/Aera/assets/60616540/374d693a-f2bf-469a-b96a-a6c1e560684a)
 
 This framework was developed with educational intent, providing users with a fresh and modern alternative to traditional nano and bigbase structures. The entire base is constructed utilizing the ImGui Library.
 ## Distinctive Features
