@@ -39,7 +39,7 @@
 This framework was developed with educational intent, providing users with a fresh and modern alternative to traditional nano and bigbase structures. The entire base is constructed utilizing the ImGui Library.
 ## Distinctive Features
 - Image Loader: Enables the loading of various image formats such as png, gif, and more.
-- Separate Thread for Main Hook: Executes the main hook in a dedicated thread for enhanced performance and efficiency.
+- Separate Thread for Main Hook: Executes the main hook in a dedicated thread.
 
 ## Getting Started
 
