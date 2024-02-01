@@ -31,7 +31,6 @@
 * [Contributing](#contributing)
 * [License](#license)
 * [Authors](#authors)
-* [Acknowledgements](#acknowledgements)
 
 ## About The Project
 
@@ -50,6 +49,7 @@ This framework was developed with educational intent, providing users with a fre
 
 - Simply Build in (Release)
 - Inject the DLL into the game
+- Open Key: INSERT
 
 ## Contributing
 
@@ -74,9 +74,3 @@ Distributed under the MIT License. See [LICENSE](https://github.com/99Anvar99/Ae
 ## Authors
 
 * **99Anvar99** - *Developer* - [99Anvar99](https://github.com/99Anvar99) - *Aera*
-
-## Acknowledgements
-
-* []()
-* []()
-* []()
