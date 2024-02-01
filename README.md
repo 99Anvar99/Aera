@@ -43,7 +43,7 @@ This framework was developed with educational intent, providing users with a fre
 
 ## Getting Started
 
-#(Direct-X SDK)
+(Direct-X SDK)
 - Install: https://www.microsoft.com/en-ca/download/details.aspx?id=6812
 
 ## Usage
