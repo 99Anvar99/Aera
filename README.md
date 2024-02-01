@@ -43,7 +43,8 @@ This framework was developed with educational intent, providing users with a fre
 
 ## Getting Started
 
-- You will need: https://www.microsoft.com/en-ca/download/details.aspx?id=6812 (Direct X SDK)
+#(Direct-X SDK)
+- Install: https://www.microsoft.com/en-ca/download/details.aspx?id=6812
 
 ## Usage
 
@@ -65,7 +66,7 @@ This framework was developed with educational intent, providing users with a fre
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/99Anvar99/Aera/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License.
 
 ## Authors
 
