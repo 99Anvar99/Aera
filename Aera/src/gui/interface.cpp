@@ -30,12 +30,9 @@ namespace ui
 		{
 			if (g_menus.size() > 2)
 			{
-				g_menus.pop();
+				return g_menus.pop();
 			}
-			else
-			{
-				g_open = false;
-			}
+			g_open = false;
 		}
 	}
 
