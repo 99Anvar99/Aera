@@ -73,3 +73,7 @@ Distributed under the MIT License.
 ## Authors
 
 * **99Anvar99** - *Developer* - [99Anvar99](https://github.com/99Anvar99) - *Aera*
+
+## Credits
+- Vali (Amazing human that mostly made this)
+- Yim Menu (thread pool, natives structure, some more utilities)
