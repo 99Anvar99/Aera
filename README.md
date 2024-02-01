@@ -53,11 +53,7 @@ This framework was developed with educational intent, providing users with a fre
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/99Anvar99/Aera/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/99Anvar99/Aera/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+- Contributions are welcome, but kindly limit them to areas such as code structure enhancements and additional base options. Avoid introducing game/menu features, such as god mode, into this base. If you wish to contribute, please create a pull request accordingly. Thank you for your understanding.
 
 ### Creating A Pull Request
 
