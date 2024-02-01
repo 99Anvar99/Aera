@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="src\rage\classes.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\classdefs.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\enums.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imconfig.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui_internal.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_rectpack.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_textedit.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_truetype.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\backends\imgui_impl_dx11.h">
+      <Filter>src\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\backends\imgui_impl_win32.h">
+      <Filter>src\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\commands\list.h">
+      <Filter>src\rage\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\commands\conversion_table.h">
+      <Filter>src\rage\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\commands\types.h">
+      <Filter>src\rage\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\engine.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fiber\pool.h">
+      <Filter>src\fiber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fiber\manager.h">
+      <Filter>src\fiber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fiber\fiber.h">
+      <Filter>src\fiber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\memory\scanner.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\memory\mem.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\memory\module.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hooking\hooking.h">
+      <Filter>src\hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hooking\methods\vmt.h">
+      <Filter>src\hooking\methods</Filter>
+    </ClInclude>
+    <ClInclude Include="src\memory\pointers.h">
+      <Filter>src\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hooking\methods\detour.h">
+      <Filter>src\hooking\methods</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\buffer.h">
+      <Filter>src\minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\MinHook.h">
+      <Filter>src\minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\trampoline.h">
+      <Filter>src\minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\hde\hde32.h">
+      <Filter>src\minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\hde\hde64.h">
+      <Filter>src\minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\hde\pstdint.h">
+      <Filter>src\minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\hde\table32.h">
+      <Filter>src\minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="src\minhook\hde\table64.h">
+      <Filter>src\minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\commands\invoker\invoker.h">
+      <Filter>src\rage\commands\invoker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\renderer.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch\pch.h">
+      <Filter>src\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\settings\command.h">
+      <Filter>src\script\submenus\home\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\clipboard.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\exceptions\disassembler.h">
+      <Filter>src\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\commands.h">
+      <Filter>src\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\engine\engine.h">
+      <Filter>src\commands\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\exceptions\handler.h">
+      <Filter>src\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\base64.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\gui.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\player_mgr.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\util.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\global.h">
+      <Filter>src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\script.h">
+      <Filter>src\script</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\self\self.h">
+      <Filter>src\script\submenus\home</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\settings\settings.h">
+      <Filter>src\script\submenus\home</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home.h">
+      <Filter>src\script\submenus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\abstract_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\base_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\break_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\interface.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\number_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\submenu.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\submenu_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\toggle_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\vector_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\logger.h">
+      <Filter>src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\features.h">
+      <Filter>src\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\manager\manager.h">
+      <Filter>src\commands\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\manager\types.h">
+      <Filter>src\commands\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\math.h">
+      <Filter>src\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commands\manager\abstract.h">
+      <Filter>src\commands\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\protections\protections.h">
+      <Filter>src\script\submenus\home</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\joaat.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rage\lists.h">
+      <Filter>src\rage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\data.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\menu_handler.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\lerping_float.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stackwalker\stackwalker.h">
+      <Filter>src\stackwalker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch\framework.h">
+      <Filter>src\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\network\players\selected_player.h">
+      <Filter>src\script\submenus\home\network\players</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\network\players.h">
+      <Filter>src\script\submenus\home\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\network\network.h">
+      <Filter>src\script\submenus\home</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\types\player_option.h">
+      <Filter>src\gui\types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\script\submenus\home\weapons\weapons.h" />
+    <ClInclude Include="src\script\submenus\home\vehicle\vehicle.h" />
+    <ClInclude Include="src\script\submenus\home\teleport\teleport.h" />
+    <ClInclude Include="src\script\submenus\home\spawner\spawner.h" />
+    <ClInclude Include="src\script\submenus\home\recovery\recovery.h" />
+    <ClInclude Include="src\script\submenus\home\miscellaneous\miscellaneous.h" />
+    <ClInclude Include="src\fiber\dxfiber.h" />
+    <ClInclude Include="src\fiber\threads.h" />
+    <ClInclude Include="src\util\imageLoaderHelpers.h" />
+    <ClInclude Include="src\imgui\stb_image.h" />
+    <ClInclude Include="src\imgui\stb_image_write.h" />
+    <ClInclude Include="src\thread pool\threadpool.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\imgui\imgui.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_demo.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_draw.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_tables.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_widgets.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\backends\imgui_impl_dx11.cpp">
+      <Filter>src\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\backends\imgui_impl_win32.cpp">
+      <Filter>src\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooking.cpp">
+      <Filter>src\hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minhook\buffer.c">
+      <Filter>src\minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minhook\hook.c">
+      <Filter>src\minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minhook\trampoline.c">
+      <Filter>src\minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minhook\hde\hde32.c">
+      <Filter>src\minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="src\minhook\hde\hde64.c">
+      <Filter>src\minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="src\memory\pointers.cpp">
+      <Filter>src\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooks\resize_buffers.cpp">
+      <Filter>src\hooking\hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooks\convert_thread_to_fiber.cpp">
+      <Filter>src\hooking\hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooks\present.cpp">
+      <Filter>src\hooking\hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\renderer.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rage\commands\invoker\invoker.cpp">
+      <Filter>src\rage\commands\invoker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch\pch.cpp">
+      <Filter>src\pch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooks\ctaskjump_constructor.cpp">
+      <Filter>src\hooking\hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooking\hooks\ctaskfall_constructor.cpp">
+      <Filter>src\hooking\hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\settings\command.cpp">
+      <Filter>src\script\submenus\home\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\commands.cpp">
+      <Filter>src\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\engine\engine.cpp">
+      <Filter>src\commands\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\features.cpp">
+      <Filter>src\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\exceptions\handler.cpp">
+      <Filter>src\exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\gui.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\player_mgr.cpp">
+      <Filter>src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rage\defines.cpp">
+      <Filter>src\rage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\script.cpp">
+      <Filter>src\script</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\self\self.cpp">
+      <Filter>src\script\submenus\home</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\settings\settings.cpp">
+      <Filter>src\script\submenus\home</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home.cpp">
+      <Filter>src\script\submenus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\interface.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\manager\manager.cpp">
+      <Filter>src\commands\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fiber\pool.cpp">
+      <Filter>src\fiber</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stackwalker\stackwalker.cpp">
+      <Filter>src\stackwalker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\protections\protections.cpp">
+      <Filter>src\script\submenus\home</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\network\players\selected_player.cpp">
+      <Filter>src\script\submenus\home\network\players</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\network\players.cpp">
+      <Filter>src\script\submenus\home\network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\network\network.cpp">
+      <Filter>src\script\submenus\home</Filter>
+    </ClCompile>
+    <ClCompile Include="src\script\submenus\home\weapons\weapons.cpp" />
+    <ClCompile Include="src\script\submenus\home\vehicle\vehicle.cpp" />
+    <ClCompile Include="src\script\submenus\home\teleport\teleport.cpp" />
+    <ClCompile Include="src\script\submenus\home\spawner\spawner.cpp" />
+    <ClCompile Include="src\script\submenus\home\recovery\recovery.cpp" />
+    <ClCompile Include="src\script\submenus\home\miscellaneous\miscellaneous.cpp" />
+    <ClCompile Include="src\util\imageLoaderHelpers.cpp" />
+    <ClCompile Include="src\thread pool\threadpool.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{79349065-aebb-4bff-93fb-4785aab3feef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rage">
+      <UniqueIdentifier>{2a7cf785-09cd-4f8c-95fd-57668b37b10a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\fiber">
+      <UniqueIdentifier>{e013f802-338c-489f-b4b8-739899fdf553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hooking">
+      <UniqueIdentifier>{4de353e7-5f19-4bc2-b219-b1e5d502f773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hooking\methods">
+      <UniqueIdentifier>{c50a4431-02bd-416f-a317-d925c7293c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\imgui">
+      <UniqueIdentifier>{2ec12100-b2d0-4619-b1b1-951ac094a65e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\imgui\backends">
+      <UniqueIdentifier>{f0980e4f-79de-461f-9bfa-c02fbb34b766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\memory">
+      <UniqueIdentifier>{69c0f72a-ba84-4346-a9d1-8373a0ffe5a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\minhook">
+      <UniqueIdentifier>{0a95a1e2-8c89-4963-9a6e-3a14c752766b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\minhook\hde">
+      <UniqueIdentifier>{aa4d0610-a37a-4c89-b27f-39acd5b2a614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hooking\hooks">
+      <UniqueIdentifier>{deb295bf-9b66-426d-9d1e-63be0d6313fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer">
+      <UniqueIdentifier>{68e96c16-bf06-43cc-ac13-57dfe31e51f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\pch">
+      <UniqueIdentifier>{76359420-b742-481e-8c90-71614a540eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script">
+      <UniqueIdentifier>{57cd5490-b981-4c2c-9a26-c3d87e81ff69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gui">
+      <UniqueIdentifier>{a87ab744-87d0-4b82-8735-25e99ddfffe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus">
+      <UniqueIdentifier>{52a4c205-430a-4909-9612-42423f6cc3c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home">
+      <UniqueIdentifier>{2a883baa-a1ca-4b82-9c8d-25b6d9fe08d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\settings">
+      <UniqueIdentifier>{18cc433c-761f-43b8-bacf-71889fcbed23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\util">
+      <UniqueIdentifier>{525a0f74-11a6-4720-87c2-399ac0342445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\exceptions">
+      <UniqueIdentifier>{06fcb1f9-bbf4-4a0f-8bf9-25cc195db7f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rage\commands">
+      <UniqueIdentifier>{249371e8-9078-468c-b367-dc61cd28fe80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rage\commands\invoker">
+      <UniqueIdentifier>{8501430d-f7d9-41e1-b25c-d2231959c142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rage\commands\invoker\spoof">
+      <UniqueIdentifier>{f0ff0709-c39d-4726-b8d4-87c2969adb62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\commands">
+      <UniqueIdentifier>{50354db1-2a02-4827-8364-2110165e372e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\commands\engine">
+      <UniqueIdentifier>{babe7808-cbb6-4e36-a385-865789721827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\commands\manager">
+      <UniqueIdentifier>{864a0856-9b8b-4a10-bcc6-44bf73d352da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gui\types">
+      <UniqueIdentifier>{9545e557-6030-433c-a692-086063250280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\self">
+      <UniqueIdentifier>{294c8572-a73b-4bb8-a37e-dbfec92ef837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{96900dcf-f62b-43f4-b286-6d069fe71e7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\stackwalker">
+      <UniqueIdentifier>{24c2516d-1c14-4eef-9263-7ab40349ec3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\network">
+      <UniqueIdentifier>{ca304d5a-7d91-4941-a953-523b15b54617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\protections">
+      <UniqueIdentifier>{d76ab95a-e6aa-4e81-9711-9a1e2f465c80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\network\players">
+      <UniqueIdentifier>{41c73253-a590-4987-9d2c-1400332ac5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\miscellaneous">
+      <UniqueIdentifier>{40865ece-7332-4227-9857-ba1bf47823bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\recovery">
+      <UniqueIdentifier>{b518c7b9-5c37-4d30-8196-1096318d139a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\vehicle">
+      <UniqueIdentifier>{5fb16476-f3f8-497f-8f31-478085dd5203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\weapons">
+      <UniqueIdentifier>{f9015c0f-f89e-4bb0-a3ea-51e04be32d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\teleport">
+      <UniqueIdentifier>{fe092039-e6dc-4ae9-8b88-f09ea5e04a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\script\submenus\home\spawner">
+      <UniqueIdentifier>{98435194-335c-44cd-92cc-441315753451}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
