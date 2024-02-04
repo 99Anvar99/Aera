@@ -7,7 +7,7 @@
   <h3 align="center">Aera</h3>
 
   <p align="center">
-    A mod menu base for Grand Theft Auto V. Strictly for educational purposes.
+    A ImGui mod menu base for Grand Theft Auto V. Strictly for educational purposes.
     <br/>
     <br/>
     <a href="https://github.com/99Anvar99/Aera"><strong>Explore the docs »</strong></a>
