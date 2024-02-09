@@ -10,30 +10,6 @@
     <ClInclude Include="src\rage\enums.h">
       <Filter>src\rage</Filter>
     </ClInclude>
-    <ClInclude Include="src\imgui\imconfig.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui_internal.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_rectpack.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_textedit.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_truetype.h">
-      <Filter>src\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\backends\imgui_impl_dx11.h">
-      <Filter>src\imgui\backends</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\backends\imgui_impl_win32.h">
-      <Filter>src\imgui\backends</Filter>
-    </ClInclude>
     <ClInclude Include="src\rage\commands\list.h">
       <Filter>src\rage\commands</Filter>
     </ClInclude>
@@ -253,29 +229,16 @@
     <ClInclude Include="src\imgui\stb_image.h" />
     <ClInclude Include="src\imgui\stb_image_write.h" />
     <ClInclude Include="src\thread pool\threadpool.h" />
+    <ClInclude Include="src\imgui\imconfig.h" />
+    <ClInclude Include="src\imgui\imgui.h" />
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui\imgui_internal.h" />
+    <ClInclude Include="src\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\imgui\imgui.cpp">
-      <Filter>src\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_demo.cpp">
-      <Filter>src\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_draw.cpp">
-      <Filter>src\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_tables.cpp">
-      <Filter>src\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_widgets.cpp">
-      <Filter>src\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\backends\imgui_impl_dx11.cpp">
-      <Filter>src\imgui\backends</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\backends\imgui_impl_win32.cpp">
-      <Filter>src\imgui\backends</Filter>
-    </ClCompile>
     <ClCompile Include="src\hooking\hooking.cpp">
       <Filter>src\hooking</Filter>
     </ClCompile>
@@ -392,6 +355,13 @@
     <ClCompile Include="src\script\submenus\home\miscellaneous\miscellaneous.cpp" />
     <ClCompile Include="src\util\imageLoaderHelpers.cpp" />
     <ClCompile Include="src\thread pool\threadpool.cpp" />
+    <ClCompile Include="src\imgui\imgui.cpp" />
+    <ClCompile Include="src\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
