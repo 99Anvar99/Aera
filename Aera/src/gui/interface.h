@@ -67,18 +67,11 @@ namespace ui
 	}
 
 	inline bool g_open{true};
-
-	namespace keys
-	{
-		extern void reset();
-		inline input g_open{VK_INSERT, 20, ControlScriptRB, ControlFrontendRight};
-		inline input g_enter{VK_RETURN, 20, ControlFrontendRright};
-		inline input g_back{VK_BACK, ControlFrontendDown};
-		inline input g_up{VK_UP, ControlFrontendUp};
-		inline input g_down{VK_DOWN, ControlFrontendDown};
-		inline input g_left{VK_LEFT, ControlFrontendLeft};
-		inline input g_right{VK_RIGHT, ControlFrontendRight};
-	}
+	inline size_t m_openDelay = 200; // Open / Close Delay
+	inline size_t m_backDelay = 200; // Back Delay
+	inline size_t m_enterDelay = 200; // Enter Delay
+	inline size_t m_verticalDelay = 100; // Left / Right Delay
+	inline size_t m_horizontalDelay = 100; // Up / Down Delay
 
 	class simpleTimer
 	{
@@ -116,6 +109,16 @@ namespace ui
 		high_resolution_clock::duration m_Delay;
 	};
 
+	//Key Handlers
+	// Keypress Handlers
+	inline bool m_open_key_pressed = false;
+	inline bool m_back_key_pressed = false;
+	inline bool m_enter_key_pressed = false;
+	inline bool m_up_key_pressed = false;
+	inline bool m_down_key_pressed = false;
+	inline bool m_left_key_pressed = false;
+	inline bool m_right_key_pressed = false;
+
 	inline bool g_push_menu{true};
 	inline std::stack<submenu> g_menus{};
 	inline submenu g_menu{};
@@ -148,7 +151,8 @@ namespace ui
 		extern const ImVec2& get_sprite_scale(float size);
 		extern rage::grcTexture* get_game_texture(const sprite& sprite);
 		extern Font get_font(i32 id);
-		extern void rectangle(const ImVec2& pos, const ImVec2& size, color color, bool background = false, float rounding = 0.f, ImDrawFlags flags = 0.f);
+		extern void rectangle(const ImVec2& pos, const ImVec2& size, color color, bool background = false,
+		                      float rounding = 0.f, ImDrawFlags flags = 0.f);
 		extern void text(i32 font_id, const std::string& text, ImVec2 pos, float size, color color, eJustify justify,
 		                 float padding, float wrap);
 		extern void rotated_image(ShaderResource resource, const ImVec2& pos, const ImVec2& size, color color,
@@ -177,6 +181,7 @@ namespace ui
 		{
 			inline void check_if_pressed(bool& value, int padIdx, int key, int keyboardKey, size_t delay);
 			inline void check_if_pressed(bool& value, int padIdx, int key, int key2, int keyboardKey, size_t delay);
+			extern void reset_input_handler();
 			extern void input_check_handler();
 			extern void actions();
 		}

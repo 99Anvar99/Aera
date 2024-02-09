@@ -16,3 +16,6 @@
 *.command
 *.pdb
 *.dll
+*.opendb
+*.db-shm
+*.db-wal

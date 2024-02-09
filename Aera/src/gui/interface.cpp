@@ -4,20 +4,6 @@
 
 namespace ui
 {
-	namespace keys
-	{
-		void reset()
-		{
-			g_open.m_pressed = false;
-			g_enter.m_pressed = false;
-			g_back.m_pressed = false;
-			g_up.m_pressed = false;
-			g_down.m_pressed = false;
-			g_left.m_pressed = false;
-			g_right.m_pressed = false;
-		}
-	}
-
 	namespace menu
 	{
 		void push(submenu* sub)
@@ -243,52 +229,63 @@ namespace ui
 				}
 			}
 
+			void reset_input_handler()
+			{
+				m_open_key_pressed = false;
+				m_back_key_pressed = false;
+				m_enter_key_pressed = false;
+				m_up_key_pressed = false;
+				m_down_key_pressed = false;
+				m_left_key_pressed = false;
+				m_right_key_pressed = false;
+			}
+
 			void input_check_handler()
 			{
-				check_if_pressed(keys::g_open.m_pressed, 2, 227, 175, VK_INSERT, keys::g_open.m_delay);	// RB + R-Arrow
-				check_if_pressed(keys::g_back.m_pressed, 2, 194, VK_BACK, keys::g_back.m_delay);			// A
-				check_if_pressed(keys::g_enter.m_pressed, 2, 191, VK_RETURN, keys::g_enter.m_delay);		// B
-				check_if_pressed(keys::g_up.m_pressed, 2, 172, VK_UP, keys::g_up.m_delay);			// U-Arrow
-				check_if_pressed(keys::g_down.m_pressed, 2, 173, VK_DOWN, keys::g_down.m_delay);		// D-Arrow
-				check_if_pressed(keys::g_left.m_pressed, 2, 174, VK_LEFT, keys::g_left.m_delay);		// L-Arrow
-				check_if_pressed(keys::g_right.m_pressed, 2, 175, VK_RIGHT, keys::g_right.m_delay);	// R-Arrow
+				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);	// RB + R-Arrow
+				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);				// A
+				check_if_pressed(m_enter_key_pressed, 2, 191, VK_RETURN, m_backDelay);			// B
+				check_if_pressed(m_up_key_pressed, 2, 172, VK_UP, m_verticalDelay);				// U-Arrow
+				check_if_pressed(m_down_key_pressed, 2, 173, VK_DOWN, m_verticalDelay);			// D-Arrow
+				check_if_pressed(m_left_key_pressed, 2, 174, VK_LEFT, m_horizontalDelay);			// L-Arrow
+				check_if_pressed(m_right_key_pressed, 2, 175, VK_RIGHT, m_horizontalDelay);		// R-Arrow
 			}
 
 			void actions()
 			{
-				if (keys::g_open.m_pressed)
+				if (m_open_key_pressed) 
 				{
 					sounds::queue(g_open ? sounds::g_open : sounds::g_close);
 					g_open ^= true;
 				}
 				if (g_open)
 				{
-					if (keys::g_enter.m_pressed)
+					if (m_enter_key_pressed)
 					{
 						sounds::queue(sounds::g_enter);
 						CURRENT_MENU.action(eActionType::Enter);
 					}
-					if (keys::g_back.m_pressed)
+					if (m_back_key_pressed)
 					{
 						sounds::queue(sounds::g_back);
 						menu::pop();
 					}
-					if (keys::g_up.m_pressed)
+					if (m_up_key_pressed)
 					{
 						sounds::queue(sounds::g_up);
 						CURRENT_MENU.action(eActionType::Up);
 					}
-					if (keys::g_down.m_pressed)
+					if (m_down_key_pressed)
 					{
 						sounds::queue(sounds::g_down);
 						CURRENT_MENU.action(eActionType::Down);
 					}
-					if (keys::g_left.m_pressed)
+					if (m_left_key_pressed)
 					{
 						sounds::queue(sounds::g_left);
 						CURRENT_MENU.action(eActionType::Left);
 					}
-					if (keys::g_right.m_pressed)
+					if (m_right_key_pressed)
 					{
 						sounds::queue(sounds::g_right);
 						CURRENT_MENU.action(eActionType::Right);

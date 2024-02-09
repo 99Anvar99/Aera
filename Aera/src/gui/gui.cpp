@@ -175,7 +175,7 @@ namespace ui
 			ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize);
 			if (ImGui::Begin("UI", nullptr, 935))
 			{
-				keys::reset();
+				handlers::key::reset_input_handler();
 				handlers::key::input_check_handler();
 				handlers::key::actions();
 				if (g_open)
