@@ -53,6 +53,10 @@ This framework was developed with educational intent, providing users with a fre
 - Inject the DLL into the game
 - Open Key: INSERT
 
+If you have folder created in appdata/Aera/Headers
+- (You can add custom images to appdata/Aera/Headers)
+You can change that in the code to any desired location
+
 ## Contributing
 
 - Contributions are welcome, but kindly limit them to areas such as code structure enhancements and additional base options. Avoid introducing game/menu features, such as god mode, into this base. If you wish to contribute, please create a pull request accordingly. Thank you for your understanding.
