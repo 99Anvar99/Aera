@@ -49,7 +49,7 @@ This framework was developed with educational intent, providing users with a fre
 
 ## Usage
 
-- Simply Build in (Release) | or get the dll from RELEASE section on GitHub
+- Simply Build in (Release)
 - Inject the DLL into the game
 - Open Key: INSERT
 
