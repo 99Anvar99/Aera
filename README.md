@@ -21,7 +21,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/99Anvar99/Aera/total) ![Contributors](https://img.shields.io/github/contributors/99Anvar99/Aera?color=dark-green) ![Forks](https://img.shields.io/github/forks/99Anvar99/Aera?style=social) ![Stargazers](https://img.shields.io/github/stars/99Anvar99/Aera?style=social) ![Issues](https://img.shields.io/github/issues/99Anvar99/Aera) ![License](https://img.shields.io/github/license/99Anvar99/Aera) 
+![Contributors](https://img.shields.io/github/contributors/99Anvar99/Aera?color=dark-green) ![Forks](https://img.shields.io/github/forks/99Anvar99/Aera?style=social) ![Stargazers](https://img.shields.io/github/stars/99Anvar99/Aera?style=social) ![Issues](https://img.shields.io/github/issues/99Anvar99/Aera) ![License](https://img.shields.io/github/license/99Anvar99/Aera) 
 
 ## Works as of (1.68 | 3095)
 
