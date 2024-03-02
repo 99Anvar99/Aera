@@ -1,15 +1,18 @@
 #include "players.h"
+
+#include <ranges>
+
 #include "players/selected_player.h"
 
 namespace ui::submenus
 {
 	void playersSubmenu::init(submenu& submenu)
 	{
-		for (auto& e : util::network::g_manager)
+		for (auto& player : util::network::g_manager | std::views::values)
 		{
-			if (auto& p{e.second})
+			if (player)
 			{
-				submenu.add(playerOption(p));
+				submenu.add(playerOption(player));
 			}
 		}
 	}

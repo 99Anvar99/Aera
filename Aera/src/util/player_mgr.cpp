@@ -11,7 +11,7 @@ namespace util::network
 			m_snPlayer = session->m_players[m_netGamePlayer->m_player_id];
 			m_snPeer = session->m_peers[m_netGamePlayer->m_player_id];
 			m_index = m_netGamePlayer->m_player_id;
-			m_host = isHost(m_index);
+			m_host = m_netGamePlayer->is_host();
 			m_playerInfo = m_netGamePlayer->m_player_info;
 			if (m_playerInfo)
 			{
@@ -66,7 +66,7 @@ namespace util::network
 		{
 			m_playerCount = mgr()->m_player_count;
 			m_playerLimit = mgr()->m_player_limit;
-			for (u16 i{m_playerCount}; i; --i)
+			for (u16 i = 0; i < m_playerLimit; ++i)
 			{
 				m_players[i].update(getPlayer(i));
 			}
