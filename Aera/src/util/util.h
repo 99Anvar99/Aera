@@ -267,7 +267,7 @@ namespace util
 		inline bool isHost(u8 index)
 		{
 			auto player{(*pointers::g_networkPlayerMgr)->m_player_list[index]};
-			return player && player->IsConnected() && player->IsNetworkHost();
+			return player && player->is_valid() && player->is_host();
 		}
 
 		inline CNetGamePlayer* getScriptHostNetGamePlayer()

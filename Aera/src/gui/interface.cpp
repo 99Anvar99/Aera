@@ -242,12 +242,12 @@ namespace ui
 
 			void input_check_handler()
 			{
-				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);	// RB + R-Arrow
-				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);				// A
+				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);		// RB + R-Arrow
+				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);			// A
 				check_if_pressed(m_enter_key_pressed, 2, 191, VK_RETURN, m_backDelay);			// B
 				check_if_pressed(m_up_key_pressed, 2, 172, VK_UP, m_verticalDelay);				// U-Arrow
 				check_if_pressed(m_down_key_pressed, 2, 173, VK_DOWN, m_verticalDelay);			// D-Arrow
-				check_if_pressed(m_left_key_pressed, 2, 174, VK_LEFT, m_horizontalDelay);			// L-Arrow
+				check_if_pressed(m_left_key_pressed, 2, 174, VK_LEFT, m_horizontalDelay);		// L-Arrow
 				check_if_pressed(m_right_key_pressed, 2, 175, VK_RIGHT, m_horizontalDelay);		// R-Arrow
 			}
 
