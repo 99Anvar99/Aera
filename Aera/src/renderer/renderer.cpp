@@ -4,15 +4,15 @@
 #include "gui/gui.h"
 
 // Create font using existing font path
-ImFont* create_im_font(const fs::path& path, float size, const ImFontConfig* config)
+ImFont* create_im_font(const fs::path& path, float size, const ImFontConfig* config, const ImWchar* glyph_ranges = nullptr)
 {
-	return ImGui::GetIO().Fonts->AddFontFromFileTTF(path.string().c_str(), size, config);
+	return ImGui::GetIO().Fonts->AddFontFromFileTTF(path.string().c_str(), size, config, glyph_ranges);
 }
 
 // Crate font from loading in memory
-ImFont* create_im_font(void* font_data, int font_size, float size, const ImFontConfig* config)
+ImFont* create_im_font(void* font_data, int font_size, float size, const ImFontConfig* config, const ImWchar* glyph_ranges = nullptr)
 {
-	return ImGui::GetIO().Fonts->AddFontFromMemoryTTF(font_data, font_size, size, config);
+	return ImGui::GetIO().Fonts->AddFontFromMemoryTTF(font_data, font_size, size, config, glyph_ranges);
 }
 
 renderer::renderer() : m_swapchain(*pointers::g_swapChain)
@@ -29,7 +29,7 @@ renderer::renderer() : m_swapchain(*pointers::g_swapChain)
 	ImGui::StyleColorsClassic();
 	ui::drawing::init();
 	const auto win_fonts = std::filesystem::path(std::getenv("SYSTEMROOT")) / "Fonts";
-	ImFontAtlas* atlas{ui::drawing::g_imgui_io->Fonts};
+	const auto atlas{ui::drawing::g_imgui_io->Fonts};
 	RECT handle{};
 	if (GetWindowRect(FindWindowA("grcWindow", nullptr), &handle))
 	{
@@ -37,6 +37,12 @@ renderer::renderer() : m_swapchain(*pointers::g_swapChain)
 	}
 	const float global_size{55.f / 1920.f * m_window.size.x};
 	m_fontCfg.FontDataOwnedByAtlas = false;
+
+	// ## You can add fonts to support different languages
+	// Example: support for Cyrillic
+	// io.Fonts->GetGlyphRangesCyrillic() || after &m_fontCfg
+	// m_arial = create_im_font(win_fonts / "arial.ttf", global_size, &m_fontCfg, atlas->GetGlyphRangesCyrillic());
+	// More can be found in ImGui_draw.cpp or https://github.com/ocornut/imgui/blob/master/imgui_draw.cpp
 
 	m_arial = create_im_font(win_fonts / "arial.ttf", global_size, &m_fontCfg);
 	m_arialBold = create_im_font(win_fonts / "arialbd.ttf", global_size, &m_fontCfg);
