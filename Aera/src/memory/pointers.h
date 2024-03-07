@@ -1,5 +1,6 @@
 #pragma once
 #include "rage/classes.h"
+#include "util/disable_anti_cheat_skeleton.h"
 
 namespace pointers
 {
@@ -42,6 +43,9 @@ namespace pointers
 	inline types::fixVectors g_fixVectors{};
 	inline types::getNativeHandler g_getNativeHandler{};
 
+	inline rage::game_skeleton* g_game_skeleton;
+	inline void (*g_nullsub)();
+
 	inline uint32_t* g_frame_count{};
 	inline rage::grcTextureStore* g_textureStore{};
 	inline ScGameInfo* g_scGameInfo{};
@@ -52,6 +56,8 @@ namespace pointers
 	inline CNetwork** g_network{};
 	inline CPedFactory** g_pedFactory{};
 	inline CReplayInterface** g_replayInterface{};
+	inline PVOID g_queueDependency{};
+	inline PVOID g_httpStartRequest{};
 	inline CGameScriptHandlerMgr* g_scriptHandlerMgr{};
 	inline rage::scrProgramTable* g_scrProgramTable{};
 	inline rage::scrNativeRegistrationTable* g_nativeRegistrationTable{};

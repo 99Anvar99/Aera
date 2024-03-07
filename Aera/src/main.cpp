@@ -26,6 +26,48 @@ void thread_function()
 	std::exit(0);
 }
 
+
+inline bool disable_anti_cheat_skeleton()
+{
+	bool patched = false;
+	for (rage::game_skeleton_update_mode* mode = pointers::g_game_skeleton->m_update_modes; mode; mode = mode->m_next)
+	{
+		for (rage::game_skeleton_update_base* update_node = mode->m_head; update_node; update_node = update_node->
+		     m_next)
+		{
+			if (update_node->m_hash != rage::constexprJoaat("Common Main"))
+				continue;
+
+			auto group = reinterpret_cast<rage::game_skeleton_update_group*>(update_node);
+			for (rage::game_skeleton_update_base* group_child_node = group->m_head; group_child_node; group_child_node =
+			     group_child_node->m_next)
+			{
+				// TamperActions is a leftover from the old AC, but still useful to block anyway
+				if (group_child_node->m_hash != 0xA0F39FB6 && group_child_node->m_hash != rage::constexprJoaat(
+					"TamperActions"))
+					continue;
+
+				patched = true;
+				//LOG(INFO) << "Patching problematic skeleton update";
+				reinterpret_cast<rage::game_skeleton_update_element*>(group_child_node)->m_function =
+					pointers::g_nullsub;
+			}
+			break;
+		}
+	}
+
+	for (rage::skeleton_data& i : pointers::g_game_skeleton->m_sys_data)
+	{
+		if (i.m_hash != 0xA0F39FB6 && i.m_hash != rage::constexprJoaat("TamperActions"))
+			continue;
+
+		i.m_init_func = reinterpret_cast<uint64_t>(pointers::g_nullsub);
+		i.m_shutdown_func = reinterpret_cast<uint64_t>(pointers::g_nullsub);
+	}
+	return patched;
+}
+
+
 void init()
 {
 	exceptions::init_exception_handler();
@@ -41,6 +83,13 @@ void init()
 			std::this_thread::sleep_for(1000ms);
 		}
 	}
+	// Disable anti-cheat skeleton
+	while (!disable_anti_cheat_skeleton())
+	{
+		LOG(Warn, "Failed to patch anticheat gameskeleton. Trying again...");
+		std::this_thread::sleep_for(500ms);
+	}
+	LOG(Info, "Disabled anticheat gameskeleton!");
 	//Create rendering pointer
 	renderer_instance = std::make_unique<renderer>();
 	//Create and enable hooks. (Enable is handled in hooking::hooking)

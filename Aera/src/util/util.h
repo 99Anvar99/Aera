@@ -396,12 +396,12 @@ namespace util
 		}
 	}
 
-	inline void async(std::function<void()> callback)
+	inline void async(const std::function<void()>& callback)
 	{
 		std::thread(callback).detach();
 	}
 
-	inline void delayedThread(bool& running, milliseconds ms, std::function<void()> callback)
+	inline void delayedThread(bool& running, milliseconds ms, const std::function<void()>& callback)
 	{
 		async([&]
 		{
@@ -416,6 +416,8 @@ namespace util
 
 	inline bool inModuleRegion(cc* module, u64 address)
 	{
+		if(!address)
+			return false;
 		static HMODULE hmod{GetModuleHandleA(module ? module : nullptr)};
 		static u64 moduleBase{};
 		static u64 moduleSize{};
@@ -424,12 +426,13 @@ namespace util
 			MODULEINFO info{};
 			if (!K32GetModuleInformation(GetCurrentProcess(), hmod, &info, sizeof(info)))
 			{
+				LOG(Fatal, "GetModuleInformation failed!");
 				return true;
 			}
-			moduleBase = (u64)hmod;
+			moduleBase = reinterpret_cast<u64>(hmod);
 			moduleSize = static_cast<u64>(info.SizeOfImage);
 		}
-		return address > moduleBase && address < (moduleBase + moduleSize);
+		return address > moduleBase && address < moduleBase + moduleSize;
 	}
 
 	inline bool checkIns(cc* module, u64 address, u8 ins)
@@ -438,7 +441,7 @@ namespace util
 		{
 			return false;
 		}
-		return *(u8*)address == ins;
+		return *reinterpret_cast<u8*>(address) == ins;
 	}
 
 	inline bool pressed(i8 key)
@@ -453,7 +456,7 @@ namespace util
 		return false;
 	}
 
-	inline bool onPress(i8 key, std::function<void()> cb = {})
+	inline bool onPress(i8 key, const std::function<void()>& cb = {})
 	{
 		if (pressed(key))
 		{
@@ -513,6 +516,7 @@ namespace util
 				inf = static_cast<t*>(classes::getPickupInterface());
 			}
 			break;
+		default: ;
 		}
 		for (int32_t i{}; i != inf->m_count; ++i)
 		{
@@ -522,7 +526,7 @@ namespace util
 		}
 		for (int32_t i{}; i != objects.size(); ++i)
 		{
-			arr[i] = classes::getSGUIDFromEntity((rage::CEntity*)objects[i]);
+			arr[i] = classes::getSGUIDFromEntity(reinterpret_cast<rage::CEntity*>(objects[i]));
 		}
 		return objects.size();
 	}
@@ -611,12 +615,12 @@ namespace util
 	}
 
 	//Not compile time but I'm fucking sick of issues so I'm using what works
-	inline std::vector<const char*> g_badEndpoints{
+	inline std::vector g_badEndpoints{
 		"SubmitCompressed",
 		"SubmitRealTime"
 	};
 
-	inline bool badEndpoint(std::string endpoint)
+	inline bool badEndpoint(const std::string& endpoint)
 	{
 		for (auto& e : g_badEndpoints)
 		{

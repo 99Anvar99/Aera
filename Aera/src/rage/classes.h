@@ -2177,51 +2177,51 @@ namespace rage
 
 		bool crc_flag()
 		{
-			return !(*(i8*)(*(u64*)__readgsqword(0x58) + 0xB4) & 1);
+			return !(*reinterpret_cast<i8*>(*reinterpret_cast<u64*>(__readgsqword(0x58)) + 0xB4) & 1);
 		}
 	};
 
-	template <typename t>
-	class ObfVar
-	{
-	public:
-		t getData()
-		{
-			auto v105 = m_unk4;
-			auto v28 = m_unk1 & v105;
-			auto v94 = m_unk2 & ~v105;
-			return v28 | v94;
-		}
+	template <typename T>
+    class ObfVar
+    {
+	    T m_unk1;
+        T m_unk2;
+        T m_unk3;
+        T m_unk4;
 
-		operator t()
-		{
-			return getData();
-		}
+    public:
+        T getData() const
+        {
+            T v105 = m_unk4;
+            T v28 = m_unk1 & v105;
+            T v94 = m_unk2 & ~v105;
+            return v28 | v94;
+        }
+
+        operator T() const
+        {
+            return getData();
+        }
+
 #if _WIN32
-		void setData(t val)
-		{
-			auto seed = time(nullptr);
-			m_unk3 = seed;
-			seed = time(nullptr);
-			m_unk4 = seed;
+        void setData(T val)
+        {
+            auto seed = static_cast<T>(time(nullptr)); // Use static_cast to ensure the correct type
+            m_unk3 = seed;
+            seed = static_cast<T>(time(nullptr));
+            m_unk4 = seed;
 
-			auto v48 = val & ~seed;
-			m_unk1 = seed & val;
-			m_unk2 = v48;
-		}
+            T v48 = val & ~seed;
+            m_unk1 = seed & val;
+            m_unk2 = v48;
+        }
 
-		void operator =(t val)
-		{
-			setData(val);
-		}
+        void operator =(T val)
+        {
+            setData(val);
+        }
 #endif
-
-	private:
-		t m_unk1;
-		t m_unk2;
-		t m_unk3;
-		t m_unk4;
-	};
+    };
 
 	class rlSessionDetail
 	{

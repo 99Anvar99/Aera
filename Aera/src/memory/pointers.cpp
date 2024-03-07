@@ -11,6 +11,8 @@ namespace pointers
 		g_scrThreadTick = scan("STT", "80 B9 ? ? ? ? ? 8B FA 48 8B D9 74 05").sub(0xF).as<decltype(g_scrThreadTick)>();
 		g_scrThreadKill = scan("STK", "48 89 5C 24 ? 57 48 83 EC 20 48 83 B9 ? ? ? ? ? 48 8B D9 74 14").as<decltype(g_scrThreadKill)>();
 		g_frame_count = scan("FC", "8B 15 ? ? ? ? 41 FF CF").lea().as<decltype(g_frame_count)>();
+		g_game_skeleton = scan("GSU", "48 8D 0D ? ? ? ? BA ? ? ? ? 74 05 BA ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? C6 05 ? ? ? ? ? 48 8D 0D ? ? ? ? BA ? ? ? ? 84 DB 75 05 BA ? ? ? ? E8 ? ? ? ? 48 8B CD C6 05 ? ? ? ? ? E8 ? ? ? ? 84").mov().as<decltype(g_game_skeleton)>();
+		g_nullsub = scan("NS", "90 C3").as<decltype(g_nullsub)>();
 		g_handleToPointer = scan("HTP", "83 F9 FF 74 31 4C 8B 0D").as<decltype(g_handleToPointer)>();
 		g_pointerToHandle = scan("PTH", "48 8D 1C F8 48 8B CB").add(7).call().as<decltype(g_pointerToHandle)>();
 		g_readBitbufArray = scan("RBA", "48 89 5C 24 ? 57 48 83 EC 30 41 8B F8 4C").as<decltype(g_readBitbufArray)>();
@@ -30,6 +32,8 @@ namespace pointers
 		g_network = scan("N", "48 8B 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 84 C0 75 17 48 8B 0D ? ? ? ? 48 8B D7").mov().as<decltype(g_network)>();
 		g_pedFactory = scan("PF", "48 8B 05 ? ? ? ? 48 8B 48 08 48 85 C9 74 52 8B 81").mov().as<decltype(g_pedFactory)>();
 		g_replayInterface = scan("RI", "0F B7 44 24 ? 66 89 44 4E").add(0x1C).mov().as<decltype(g_replayInterface)>();
+		g_queueDependency = scan("QD", "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 8B F2 49 8B F8").as<decltype(g_queueDependency)>();
+		g_httpStartRequest = scan("HSR", "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 48 8B D9 48 81 C1 ? ? ? ? 48 8B F2 33 FF E8").as<decltype(g_httpStartRequest)>();
 		g_scriptHandlerMgr = scan("SHM", "74 17 48 8B C8 E8 ? ? ? ? 48 8D 0D").add(0xA).mov().as<decltype(g_scriptHandlerMgr)>();
 		g_scrProgramTable = scan("SPT", "48 8B 1D ? ? ? ? 41 83 F8 FF").mov().as<decltype(g_scrProgramTable)>();
 		g_fixVectors = scan("FV", "83 79 ? ? 48 8B D1 74 ? FF 4A").cmp().as<decltype(g_fixVectors)>();

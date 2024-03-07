@@ -237,6 +237,7 @@
     <ClInclude Include="src\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\imgui\imstb_textedit.h" />
     <ClInclude Include="src\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\util\disable_anti_cheat_skeleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\hooking\hooking.cpp">
@@ -362,6 +363,8 @@
     <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\hooking\hooks\queue_dependency.cpp" />
+    <ClCompile Include="src\hooking\hooks\http_start_request.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
