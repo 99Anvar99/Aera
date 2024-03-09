@@ -12,7 +12,7 @@ namespace pointers
 		using scrThreadTick = rage::eThreadState(*)(rage::scrThread* thread, u32 opsToExecute);
 		using scrThreadKill = void(*)(rage::scrThread* thread);
 		using pointerToHandle = Entity(*)(rage::CEntity* ptr);
-		using handleToPointer = rage::CEntity* (*)(Entity handle);
+		using handleToPointer = rage::CDynamicEntity* (*)(Entity);
 		using readBitbufArray = bool(*)(rage::datBitBuffer* Buffer, PVOID Read, i32 Bits, i32 Unk);
 		using writeBitbufArray = bool(*)(rage::datBitBuffer* Buffer, PVOID Read, i32 Bits, i32 Unk);
 		using readBitsSingle = bool(*)(u8* Data, u32* Value, i32 Bits, i32 Start);
@@ -24,6 +24,9 @@ namespace pointers
 		using getGamerTaskResult = bool(*)(i32 ProfileIndex, rage::rlGamerHandle* pHandles, i32 Count, rage::rlSessionByGamerTaskResult* pResult, i32 Unk, bool* pSuccess, rage::rlTaskStatus* pStatus);
 		using fixVectors = void (*)(rage::scrNativeCallContext* call_ctx);
 		using getNativeHandler = rage::scrNativeHandler(*)(rage::scrNativeRegistrationTable* registration_table, rage::scrNativeHash hash);
+		using get_gxt_label_from_table_t = cc * (*)(void* This, cc* label);
+		using get_joaated_gxt_label_from_table_t = cc * (*)(void* This, u32 hash);
+		using request_control = void(*)(rage::netObject* net_object);
 	}
 
 	inline types::scrThreadInit g_scrThreadInit{};
@@ -42,10 +45,16 @@ namespace pointers
 	inline types::getGamerTaskResult g_getGamerTaskResult{};
 	inline types::fixVectors g_fixVectors{};
 	inline types::getNativeHandler g_getNativeHandler{};
+	inline types::get_gxt_label_from_table_t g_getGxtLabelFromTable{};
+	inline types::get_joaated_gxt_label_from_table_t g_getJoaatedGxtLabelFromTable{};
+	inline types::request_control g_requestControl{};
 
 	inline rage::game_skeleton* g_game_skeleton;
 	inline void (*g_nullsub)();
 
+	inline void* g_gxtLabels{};
+
+	inline bool* g_isSessionActive{};
 	inline uint32_t* g_frame_count{};
 	inline rage::grcTextureStore* g_textureStore{};
 	inline ScGameInfo* g_scGameInfo{};

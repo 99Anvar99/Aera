@@ -272,6 +272,8 @@
     <ClInclude Include="src\util\clipboard.h" />
     <ClInclude Include="src\util\disable_anti_cheat_skeleton.h" />
     <ClInclude Include="src\util\global.h" />
+    <ClInclude Include="src\util\helpers\gxt_helper.h" />
+    <ClInclude Include="src\util\helpers\vehicle_spawner.h" />
     <ClInclude Include="src\util\imageLoaderHelpers.h" />
     <ClInclude Include="src\util\player_mgr.h" />
     <ClInclude Include="src\util\util.h" />

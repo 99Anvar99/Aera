@@ -19,6 +19,9 @@ namespace pointers
 		g_writeBitbufArray = scan("WBA", "E8 ? ? ? ? 01 7E 08").call().as<decltype(g_writeBitbufArray)>();
 		g_readBitsSingle = scan("RBS", "48 8D 54 24 ? 41 C1 E1 03").add(0xF).call().as<decltype(g_readBitsSingle)>();
 		g_writeBitsSingle = scan("WBS", "E8 ? ? ? ? 01 6B 10").call().as<decltype(g_writeBitsSingle)>();
+		g_gxtLabels = scan("GL", "48 8D 0D ? ? ? ? E8 ? ? ? ? 8B 0D ? ? ? ? 48 8B 5C 24").mov().as<decltype(g_gxtLabels)>();
+		g_getGxtLabelFromTable = scan("GGLFT", "E8 ? ? ? ? 48 8D 4B 0B").call().as<decltype(g_getGxtLabelFromTable)>();
+		g_getJoaatedGxtLabelFromTable = scan("GJGLFT", "48 83 EC 28 E8 ? ? ? ? 48 85 C0 75 34 8B 0D ? ? ? ? 65 48 8B 04 25 ? ? ? ? BA ? ? ? ? 48 8B 04 C8 8B 0C 02 D1").as<decltype(g_getJoaatedGxtLabelFromTable)>();
 		g_cTaskJumpConstructor = scan("CTJC", "48 89 5C 24 ? 89 54 24 ? 57 48 83 EC ? 0F 29 74 24").as<decltype(g_cTaskJumpConstructor)>();
 		g_cTaskFallConstructor = scan("CTFC", "E8 ? ? ? ? B3 ? 08 98").call().as<decltype(g_cTaskFallConstructor)>();
 		g_scGetGameInfoIndex = scan("SGGII", "E8 ? ? ? ? 85 C0 78 27 3B 47 14 7D 1E 48 98 48 8B D6 48 69 C8",{"socialclub.dll"}).call().as<decltype(g_scGetGameInfoIndex)>();
@@ -30,6 +33,8 @@ namespace pointers
 		g_networkPlayerMgr = scan("NPM", "48 8B 0D ? ? ? ? 8A D3 48 8B 01 FF 50 ? 4C 8B 07 48 8B CF").mov().as<decltype(g_networkPlayerMgr)>();
 		g_networkObjectMgr = scan("NOM", "48 8B 0D ? ? ? ? 45 33 C0 E8 ? ? ? ? 33 FF 4C 8B F0").mov().as<decltype(g_networkObjectMgr)>();
 		g_network = scan("N", "48 8B 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 84 C0 75 17 48 8B 0D ? ? ? ? 48 8B D7").mov().as<decltype(g_network)>();
+		g_isSessionActive = scan("ISA", "40 38 35 ? ? ? ? 75 0E 4C 8B C3 49 8B D7 49 8B CE").mov().as<decltype(g_isSessionActive)>();
+		g_requestControl = scan("RC", "E8 ? ? ? ? EB 3E 48 8B D3").call().as<decltype(g_requestControl)>();
 		g_pedFactory = scan("PF", "48 8B 05 ? ? ? ? 48 8B 48 08 48 85 C9 74 52 8B 81").mov().as<decltype(g_pedFactory)>();
 		g_replayInterface = scan("RI", "0F B7 44 24 ? 66 89 44 4E").add(0x1C).mov().as<decltype(g_replayInterface)>();
 		g_queueDependency = scan("QD", "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 8B F2 49 8B F8").as<decltype(g_queueDependency)>();

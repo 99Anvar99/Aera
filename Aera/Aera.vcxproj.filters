@@ -238,6 +238,8 @@
     <ClInclude Include="src\imgui\imstb_textedit.h" />
     <ClInclude Include="src\imgui\imstb_truetype.h" />
     <ClInclude Include="src\util\disable_anti_cheat_skeleton.h" />
+    <ClInclude Include="src\util\helpers\vehicle_spawner.h" />
+    <ClInclude Include="src\util\helpers\gxt_helper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\hooking\hooking.cpp">

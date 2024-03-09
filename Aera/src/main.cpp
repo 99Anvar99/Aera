@@ -16,7 +16,7 @@
 
 std::unique_ptr<hooking> hooking_instance{};
 std::unique_ptr<renderer> renderer_instance{};
-std::unique_ptr<thread_pool> thread_pool_instance;
+std::unique_ptr<thread_pool> thread_pool_instance{};
 
 std::mutex exit_mutex;
 
@@ -72,7 +72,7 @@ void init()
 {
 	exceptions::init_exception_handler();
 	thread_pool_instance = std::make_unique<thread_pool>();
-	g_logger = std::make_unique<logger>(BRAND" | Developer (0.00.1, b101)");
+	g_logger = std::make_unique<logger>(BRAND);
 	pointers::scan_all();
 	//Wait until game is loaded
 	if (*pointers::g_loadingScreenState != eLoadingScreenState::Finished)

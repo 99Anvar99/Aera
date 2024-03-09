@@ -21,4 +21,40 @@ namespace ui::submenus
 			return menuInstance<spawnerSubmenu>::get("Spawner", &init);
 		}
 	};
+
+	class homeSpawnerVehicle
+	{
+	private:
+		static void init(submenu& submenu);
+
+	public:
+		static menuInstance<homeSpawnerVehicle>* get()
+		{
+			return menuInstance<homeSpawnerVehicle>::get("Vehicles", &init);
+		}
+	};
+
+	class selectedVehicleSpawnerSubmenmu
+	{
+	private:
+		static void init(submenu& submenu);
+
+	public:
+		static menuInstance<selectedVehicleSpawnerSubmenmu>* get()
+		{
+			return menuInstance<selectedVehicleSpawnerSubmenmu>::get("InvalidClass", &init);
+		}
+	};
+
+	class finalselectedVehicleSpawnerSubmenmu
+	{
+	private:
+		static void init(submenu& submenu);
+
+	public:
+		static menuInstance<finalselectedVehicleSpawnerSubmenmu>* get()
+		{
+			return menuInstance<finalselectedVehicleSpawnerSubmenmu>::get("InvalidVehicle", &init);
+		}
+	};
 }
