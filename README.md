@@ -1,9 +1,5 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/99Anvar99/Aera">
-    ![Aera](https://github.com/99Anvar99/Aera/assets/60616540/8737dd70-aa37-422f-942b-1a716e17018c)
-  </a>
-
   <h3 align="center">Aera</h3>
 
   <p align="center">
