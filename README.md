@@ -6,11 +6,6 @@
     A ImGui mod menu base designed for Grand Theft Auto V. intended exclusively for educational use.
     <br/>
     <br/>
-    <a href="https://github.com/99Anvar99/Aera"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/99Anvar99/Aera">View Demo</a>
-    .
     <a href="https://github.com/99Anvar99/Aera/issues">Report Bug</a>
     .
     <a href="https://github.com/99Anvar99/Aera/issues">Request Feature</a>
