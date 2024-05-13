@@ -30,12 +30,12 @@ void execute_under_hybrid_thr(Call&& callback, Arguments&&... args)
 		auto og_thr = rage::scrThread::get();
 		auto og_alloc = rage::sysMemAllocator::get();
 		auto og_a_tls_entry = rage::sysMemAllocator::getEntry();
-		tls_ctx->m_tls_entry = *g_cached_tls_entry;
+		tls_ctx->m_allocator2 = *g_cached_tls_entry;
 		tls_ctx->m_script_thread = *g_cached_scr_thread;
 		tls_ctx->m_is_script_thread_active = true;
 		tls_ctx->m_allocator = *g_cached_scr_allocator;
 		std::invoke(std::forward<Call>(callback), std::forward<Arguments>(args)...);
-		tls_ctx->m_tls_entry = og_a_tls_entry;
+		tls_ctx->m_allocator2 = og_a_tls_entry;
 		tls_ctx->m_script_thread = og_thr;
 		tls_ctx->m_is_script_thread_active = og_thr != nullptr;
 		tls_ctx->m_allocator = og_alloc;

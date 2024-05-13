@@ -1133,25 +1133,37 @@ namespace rage
 		reset_instruction_count
 	};
 
+#pragma pack(push, 1)
 	class tlsContext
 	{
 	public:
-		char pad_0000[180]; //0x0000
-		uint32_t m_code_intergity_valid; //0x00B4
-		class sysMemAllocator* m_allocator; //0x00B8
-		class sysMemAllocator* m_tls_entry; //0x00C0
-		class sysMemAllocator* m_unk_allocator; //0x00C8
-		uint32_t m_console_handle; //0x00D0
-		char pad_00D4[188]; //0x00D4
-		uint64_t unk_0190; //0x0190
-		char pad_0194[1712]; //0x0194
-		class scrThread* m_script_thread; //0x0848
-		bool m_is_script_thread_active; //0x00850
+		char gap0[180];
+		uint8_t m_unk_byte; // 0xB4
+		char gapB5[3];
+		sysMemAllocator* m_allocator; // 0xB8
+		sysMemAllocator* m_allocator2; // 0xC0 - Same as 0xB8
+		sysMemAllocator* m_allocator3; // 0xC8 - Same as 0xB8
+		uint32_t m_console_smth; // 0xD0
+		char gapD4[188];
+		uint64_t m_unk; // 0x190
+		char gap198[1728];
+		scrThread* m_script_thread; // 0x858
+		bool m_is_script_thread_active; // 0x860
 
-		static tlsContext* get() { return *(tlsContext**)(__readgsqword(0x58)); }
-		static tlsContext** getPointer() { return (tlsContext**)(__readgsqword(0x58)); }
-	}; //Size: 0x0850
-	static_assert(sizeof(tlsContext) == 0x858);
+#if _WIN32
+		static tlsContext* get()
+		{
+			return *reinterpret_cast<tlsContext**>(__readgsqword(0x58));
+		}
+		static tlsContext** get_pointer()
+		{
+			return reinterpret_cast<tlsContext**>(__readgsqword(0x58));
+		}
+#endif
+	};
+
+	static_assert(sizeof(tlsContext) == 0x861);
+#pragma pack(pop)
 
 	union scrValue
 	{
@@ -1429,7 +1441,7 @@ namespace rage
 				rage::tlsContext, m_allocator));
 			if (!gtaTlsEntry)
 				tls->m_allocator = gtaTlsEntry;
-			tls->m_tls_entry = gtaTlsEntry;
+			tls->m_allocator2 = gtaTlsEntry;
 			return gtaTlsEntry;
 		}
 
@@ -1450,13 +1462,13 @@ namespace rage
 		static sysMemAllocator* getEntry()
 		{
 			auto tls = *(uintptr_t*)__readgsqword(0x58);
-			return *reinterpret_cast<sysMemAllocator**>(tls + offsetof(rage::tlsContext, m_tls_entry));
+			return *reinterpret_cast<sysMemAllocator**>(tls + offsetof(rage::tlsContext, m_allocator2));
 		}
 
 		static sysMemAllocator** getEntryPointer()
 		{
 			auto tls = *(uintptr_t*)__readgsqword(0x58);
-			return reinterpret_cast<sysMemAllocator**>(tls + offsetof(rage::tlsContext, m_tls_entry));
+			return reinterpret_cast<sysMemAllocator**>(tls + offsetof(rage::tlsContext, m_allocator2));
 		}
 	};
 
