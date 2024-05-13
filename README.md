@@ -66,13 +66,5 @@ Distributed under the MIT License.
 
 ## Authors
 
-* **99Anvar99** - *Developer* - [99Anvar99](https://github.com/99Anvar99) - *Aera*
-
-## Credits
-- Vali
-- Yim Menu (thread pool, natives structure, some more utilities)
-
-## !["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)
-- Paypal: @mister9982
-- BitCoin: 32cYfrR7hHL6vKrtPniKuRhQTPmRS23Shy
-- LiteCoin: MKLfBvdqiqkc1SakESapMfVcji3BTMBcja
+* **Vali**
+* **99Anvar99**
