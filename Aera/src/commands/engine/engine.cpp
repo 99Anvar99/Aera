@@ -442,51 +442,34 @@ namespace commands
 	template <typename t>
 	t engine::convertData(const std::string& str)
 	{
-		if (is_number(str))
+		static const std::unordered_map<std::string, bool> bool_map = {
+			{"on", true}, {"off", false}, {"true", true}, {"false", false},
+			{"t", true}, {"f", false}
+		};
+
+		if (is_number(str) || contains_an_number(str))
 		{
-			return static_cast<t>(stod(str));
-		}
-		if (contains_an_number(str))
-		{
-			if (str.find('.') == std::string::npos)
+			if (str.find('.') != std::string::npos)
 			{
-				if (str.find("0x") != std::string::npos || str.find("0X") != std::string::npos)
-				{
-					return static_cast<t>(stoull(str));
-				}
+				return static_cast<t>(stod(str));
+			}
+			else if (str.find("0x") != std::string::npos || str.find("0X") != std::string::npos)
+			{
+				return static_cast<t>(stoull(str));
 			}
 			else
 			{
 				return static_cast<t>(stod(str));
 			}
 		}
-		else
+
+		auto it = bool_map.find(str);
+		if (it != bool_map.end())
 		{
-			if (str == "on")
-			{
-				return static_cast<t>(true);
-			}
-			if (str == "off")
-			{
-				return static_cast<t>(false);
-			}
-			if (str == "true")
-			{
-				return static_cast<t>(true);
-			}
-			if (str == "false")
-			{
-				return static_cast<t>(false);
-			}
-			if (str == "t")
-			{
-				return static_cast<t>(true);
-			}
-			if (str == "f")
-			{
-				return static_cast<t>(false);
-			}
+			return static_cast<t>(it->second);
 		}
+
+		// default
 		return static_cast<t>(NULL);
 	}
 
