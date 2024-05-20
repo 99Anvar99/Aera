@@ -49,9 +49,6 @@ namespace pointers
 	inline types::get_joaated_gxt_label_from_table_t g_getJoaatedGxtLabelFromTable{};
 	inline types::request_control g_requestControl{};
 
-	inline rage::game_skeleton* g_game_skeleton;
-	inline void (*g_nullsub)();
-
 	inline void* g_gxtLabels{};
 
 	inline bool* g_isSessionActive{};
