@@ -365,7 +365,6 @@
     <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\hooking\hooks\queue_dependency.cpp" />
     <ClCompile Include="src\hooking\hooks\http_start_request.cpp" />
   </ItemGroup>
   <ItemGroup>

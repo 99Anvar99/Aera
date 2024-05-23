@@ -35,11 +35,9 @@ namespace pointers
 		g_requestControl = scan("RC", "E8 ? ? ? ? EB 3E 48 8B D3").call().as<decltype(g_requestControl)>();
 		g_pedFactory = scan("PF", "48 8B 05 ? ? ? ? 48 8B 48 08 48 85 C9 74 52").mov().as<decltype(g_pedFactory)>();
 		g_replayInterface = scan("RI", "0F B7 44 24 ? 66 89 44 4E").add(0x1C).mov().as<decltype(g_replayInterface)>();
-		g_queueDependency = scan("QD", "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 8B F2 49 8B F8").as<decltype(g_queueDependency)>();
 		g_httpStartRequest = scan("HSR", "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 48 8B D9 48 81 C1 28 05").as<decltype(g_httpStartRequest)>();
 		g_scriptHandlerMgr = scan("SHM", "74 17 48 8B C8 E8 ? ? ? ? 48 8D 0D").add(0xA).mov().as<decltype(g_scriptHandlerMgr)>();
 		g_scrProgramTable = scan("SPT", "48 8B 1D ? ? ? ? 41 83 F8 FF").mov().as<decltype(g_scrProgramTable)>();
-		g_fixVectors = scan("FV", "83 79 ? ? 48 8B D1 74 ? FF 4A").cmp().as<decltype(g_fixVectors)>();
 		g_getNativeHandler = scan("GNH", "48 8D 0D ? ? ? ? 48 8B 14 FA E8 ? ? ? ? 48 85 C0 75 0A").add(12).rip().as<decltype(g_getNativeHandler)>();
 		g_nativeRegistrationTable = scan("NRT", "48 8D 0D ? ? ? ? 48 8B 14 FA E8 ? ? ? ? 48 85 C0 75 0A").mov().as<decltype(g_nativeRegistrationTable)>();
 		g_swapChain = scan("SC", "48 8B 0D ? ? ? ? 48 8B 01 44 8D 43").mov().as<decltype(g_swapChain)>();

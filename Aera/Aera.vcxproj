@@ -285,7 +285,6 @@
     <ClCompile Include="src\commands\manager\manager.cpp" />
     <ClCompile Include="src\exceptions\handler.cpp" />
     <ClCompile Include="src\hooking\hooks\http_start_request.cpp" />
-    <ClCompile Include="src\hooking\hooks\queue_dependency.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\imgui\imgui_draw.cpp" />
