@@ -30,8 +30,11 @@
 
 This framework was developed with educational intent, providing users with a fresh and modern alternative to traditional nano and bigbase structures. The entire base is constructed utilizing the ImGui Library.
 ## Distinctive Features
-- Image Loader: Enables the loading of various image formats such as png, gif, and more.
+- Image Loader: Enables the loading of various image formats in high quality such as png, gif, and more.
 - Separate Thread for Main Hook: Executes the main hook in a dedicated thread.
+- Managing and utilizing in-game textures for rendering with ImGui.
+- All submenus are invoked only once during initialization to optimize resource usage.
+- The user interface is highly customizable.
 
 ## Getting Started
 
