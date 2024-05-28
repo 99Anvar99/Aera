@@ -24,6 +24,7 @@
 * [Contributing](#contributing)
 * [License](#license)
 * [Authors](#authors)
+* [Original](#original)
 
 ## About The Project
 ![image](https://github.com/99Anvar99/Aera/assets/60616540/374d693a-f2bf-469a-b96a-a6c1e560684a)
@@ -65,9 +66,12 @@ You can change that in the code to any desired location
 
 ## License
 
-Distributed under the MIT License.
+- https://github.com/Lightning-X/Aera?tab=License-1-ov-file
 
 ## Authors
 
 * **Vali**
 * **99Anvar99**
+
+## Original
+- https://github.com/Lightning-X/Aera
