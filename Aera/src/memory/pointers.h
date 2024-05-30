@@ -22,7 +22,6 @@ namespace pointers
 		using scGetGameInfoIndex = int(*)(const char* StringId, u64 Unk, u32 GameId);
 		using joinBySessionInfo = bool(*)(CNetwork* Network, rage::rlSessionInfo* Info, i32 Unk, i32 Flags, rage::rlGamerHandle* Handles, i32 HandleCount);
 		using getGamerTaskResult = bool(*)(i32 ProfileIndex, rage::rlGamerHandle* pHandles, i32 Count, rage::rlSessionByGamerTaskResult* pResult, i32 Unk, bool* pSuccess, rage::rlTaskStatus* pStatus);
-		using fixVectors = void (*)(rage::scrNativeCallContext* call_ctx);
 		using getNativeHandler = rage::scrNativeHandler(*)(rage::scrNativeRegistrationTable* registration_table, rage::scrNativeHash hash);
 		using get_gxt_label_from_table_t = cc * (*)(void* This, cc* label);
 		using get_joaated_gxt_label_from_table_t = cc * (*)(void* This, u32 hash);
@@ -43,7 +42,6 @@ namespace pointers
 	inline types::scGetGameInfoIndex g_scGetGameInfoIndex{};
 	inline types::joinBySessionInfo g_joinBySessionInfo{};
 	inline types::getGamerTaskResult g_getGamerTaskResult{};
-	inline types::fixVectors g_fixVectors{};
 	inline types::getNativeHandler g_getNativeHandler{};
 	inline types::get_gxt_label_from_table_t g_getGxtLabelFromTable{};
 	inline types::get_joaated_gxt_label_from_table_t g_getJoaatedGxtLabelFromTable{};

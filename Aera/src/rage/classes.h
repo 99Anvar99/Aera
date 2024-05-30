@@ -1225,7 +1225,7 @@ namespace rage
 			scrValue* Orig[4];
 			scrVector Buffer[4];
 
-			void copy_referenced_parameters_out()
+			constexpr void copy_referenced_parameters_out()
 			{
 				while (BufferCount--)
 				{
