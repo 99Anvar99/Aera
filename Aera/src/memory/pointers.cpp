@@ -27,7 +27,7 @@ namespace pointers
 		g_textureStore = scan("TS", "48 8D 0D ? ? ? ? E8 ? ? ? ? 8B 45 EC").mov().as<decltype(g_textureStore)>();
 		g_scGameInfo = scan("SGI", "48 8D 05 ? ? ? ? 48 03 F8 44 8B 47 14 48 8D 57 20 E8 ? ? ? ? 85",{"socialclub.dll"}).mov().as<decltype(g_scGameInfo)>();
 		g_friendRegistry = scan("FR", "41 8B F4 3B C5").sub(0xB).lea().as<decltype(g_friendRegistry)>();
-		g_scInfo = scan("SI", "48 8B D3 48 8D 4C 24 20 48 69 D2 68 0F 00 00").sub(7).mov().as<decltype(g_scInfo)>();
+		g_scInfo = scan("SI", "48 8B D3 48 8D 4C 24 ? 48 69 D2").sub(4).rip().as<decltype(g_scInfo)>();
 		g_networkPlayerMgr = scan("NPM", "48 8B 0D ? ? ? ? 8A D3 48 8B 01 FF 50 ? 4C 8B 07").mov().as<decltype(g_networkPlayerMgr)>();
 		g_networkObjectMgr = scan("NOM", "48 8B 0D ? ? ? ? 45 33 C0 E8 ? ? ? ? 33 FF 4C 8B F0").mov().as<decltype(g_networkObjectMgr)>();
 		g_network = scan("N", "48 8B 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 84 C0 75 17").mov().as<decltype(g_network)>();
@@ -44,7 +44,7 @@ namespace pointers
 		g_hashTable = scan("MT", "4C 03 05 ? ? ? ? EB 03").mov().as<decltype(g_hashTable)>();
 		g_gtaThreads = scan("GT", "F5 8B FD 73").add(5).mov().as<decltype(g_gtaThreads)>();
 		g_globals = scan("G", "48 8B 8D B0 00 00 00 4C 8D 4D 08").add(0xB).mov().as<decltype(g_globals)>();
-		g_threadId = scan("TI", "8B 15 ? ? ? ? 48 8B 05 ? ? ? ? FF C2 89 15 ? ? ? ? 48 8B 0C D8").lea().as<decltype(g_threadId)>();
+		g_threadId = scan("TI", "8B 15 ? ? ? ? 48 8B 05 ? ? ? ? FF C2 89 15 ? ? ? ? 48 8B 0C F8").lea().as<decltype(g_threadId)>();
 		g_threadCount = scan("TC", "FF 0D ? ? ? ? 48 8B D9").lea().as<decltype(g_threadCount)>();
 		g_hwnd = FindWindowA("grcWindow", nullptr);
 		LOG(Info, "{}/{} pointers found. ({} failed)", g_foundSigCount, g_totalSigCount, g_failedSigCount);
