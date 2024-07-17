@@ -16,9 +16,12 @@ namespace ui
 		{
 			if (g_menus.size() > 2)
 			{
-				return g_menus.pop();
+				g_menus.pop();
 			}
-			g_open = false;
+			else
+			{
+				g_open = false;
+			}
 		}
 	}
 
@@ -204,30 +207,56 @@ namespace ui
 			void check_if_pressed(bool& value, int padIdx, int key, int keyboardKey, size_t delay)
 			{
 				static timer t;
-				if (GetForegroundWindow() == pointers::g_hwnd) {
-					if (GetAsyncKeyState(keyboardKey) & 1 || PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key) && !PAD::IS_USING_KEYBOARD_AND_MOUSE(padIdx)) { value = true; }
-					else if (GetAsyncKeyState(keyboardKey) & 0x8000) {
-						t.start(delay * 100);
-						if (t.ready())
-							value = true;
-					}
-					else { t.reset(); }
+				if (GetForegroundWindow() != pointers::g_hwnd) 
+					return;
+
+				bool key_pressed = GetAsyncKeyState(keyboardKey) & 1;
+				bool key_held = GetAsyncKeyState(keyboardKey) & 0x8000;
+				bool pad_pressed = PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key) && !
+					PAD::IS_USING_KEYBOARD_AND_MOUSE(padIdx);
+
+				if (key_pressed || pad_pressed)
+				{
+					value = true;
+				}
+				else if (key_held)
+				{
+					t.start(delay * 100);
+					if (t.ready()) value = true;
+				}
+				else
+				{
+					t.reset();
 				}
 			}
 
 			void check_if_pressed(bool& value, int padIdx, int key, int key2, int keyboardKey, size_t delay)
 			{
 				static timer t;
-				if (GetForegroundWindow() == pointers::g_hwnd) {
-					if (GetAsyncKeyState(keyboardKey) & 1 || ((PAD::IS_DISABLED_CONTROL_PRESSED(padIdx, key) || PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key)) && PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key2) && !PAD::IS_USING_KEYBOARD_AND_MOUSE(padIdx))) { value = true; }
-					else if (GetAsyncKeyState(keyboardKey) & 0x8000) {
-						t.start(delay * 100);
-						if (t.ready())
-							value = true;
-					}
-					else { t.reset(); }
+				if (GetForegroundWindow() != pointers::g_hwnd) 
+					return;
+
+				bool key_pressed = GetAsyncKeyState(keyboardKey) & 1;
+				bool key_held = GetAsyncKeyState(keyboardKey) & 0x8000;
+				bool pad_pressed = (PAD::IS_DISABLED_CONTROL_PRESSED(padIdx, key) ||
+						PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key)) &&
+					PAD::IS_DISABLED_CONTROL_JUST_PRESSED(padIdx, key2) && !PAD::IS_USING_KEYBOARD_AND_MOUSE(padIdx);
+
+				if (key_pressed || pad_pressed)
+				{
+					value = true;
+				}
+				else if (key_held)
+				{
+					t.start(delay * 100);
+					if (t.ready()) value = true;
+				}
+				else
+				{
+					t.reset();
 				}
 			}
+
 
 			void reset_input_handler()
 			{
@@ -253,45 +282,43 @@ namespace ui
 
 			void actions()
 			{
-				if (m_open_key_pressed) 
+				if (m_open_key_pressed)
 				{
 					sounds::queue(g_open ? sounds::g_open : sounds::g_close);
-					g_open ^= true;
+					g_open = !g_open;
 				}
-				if (g_open)
+
+				if (!g_open) 
+					return;
+
+				struct action_mapping
 				{
-					if (m_enter_key_pressed)
+					bool& key_pressed;
+					const soundData& sound;
+					std::function<void()> action;
+				};
+
+				std::array<action_mapping, 6> mappings = {
 					{
-						sounds::queue(sounds::g_enter);
-						CURRENT_MENU.action(eActionType::Enter);
+						{m_enter_key_pressed, sounds::g_enter, [&]() { CURRENT_MENU.action(eActionType::Enter); }},
+						{m_back_key_pressed, sounds::g_back, [&]() { menu::pop(); }},
+						{m_up_key_pressed, sounds::g_up, [&]() { CURRENT_MENU.action(eActionType::Up); }},
+						{m_down_key_pressed, sounds::g_down, [&]() { CURRENT_MENU.action(eActionType::Down); }},
+						{m_left_key_pressed, sounds::g_left, [&]() { CURRENT_MENU.action(eActionType::Left); }},
+						{m_right_key_pressed, sounds::g_right, [&]() { CURRENT_MENU.action(eActionType::Right); }}
 					}
-					if (m_back_key_pressed)
+				};
+
+				for (const auto& [key_pressed, sound, action] : mappings)
+				{
+					if (key_pressed)
 					{
-						sounds::queue(sounds::g_back);
-						menu::pop();
-					}
-					if (m_up_key_pressed)
-					{
-						sounds::queue(sounds::g_up);
-						CURRENT_MENU.action(eActionType::Up);
-					}
-					if (m_down_key_pressed)
-					{
-						sounds::queue(sounds::g_down);
-						CURRENT_MENU.action(eActionType::Down);
-					}
-					if (m_left_key_pressed)
-					{
-						sounds::queue(sounds::g_left);
-						CURRENT_MENU.action(eActionType::Left);
-					}
-					if (m_right_key_pressed)
-					{
-						sounds::queue(sounds::g_right);
-						CURRENT_MENU.action(eActionType::Right);
+						sounds::queue(sound);
+						action();
 					}
 				}
 			}
+
 		}
 	}
 }
