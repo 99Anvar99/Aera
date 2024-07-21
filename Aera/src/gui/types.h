@@ -19,7 +19,7 @@ namespace ui
 		{
 		}
 
-		void draw();
+		void draw() const;
 
 		std::string m_text{};
 		i32 m_font{};
@@ -112,7 +112,7 @@ namespace ui
 		{
 		}
 
-		void draw();
+		static void draw();
 
 		color rect(bool selected)
 		{

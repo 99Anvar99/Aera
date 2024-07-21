@@ -6,7 +6,7 @@
 
 namespace ui
 {
-	void tooltip::draw()
+	void tooltip::draw() const
 	{
 		if (!m_enabled)
 			return;
