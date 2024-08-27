@@ -6,7 +6,7 @@ namespace ui
 {
 	namespace menu
 	{
-		void push(submenu* sub)
+		void push(const submenu* sub)
 		{
 			g_menu = *sub;
 			g_push_menu = true;
@@ -14,7 +14,7 @@ namespace ui
 
 		void pop()
 		{
-			if (g_menus.size() > 2)
+			if (g_menus.size() > 1 && g_menus.top().m_name != "Home")
 			{
 				g_menus.pop();
 			}
@@ -27,6 +27,12 @@ namespace ui
 
 	namespace drawing
 	{
+		// Safer way to compare floating points
+		bool are_floats_equal(const float a, const float b, const float epsilon = 0.0001f)
+		{
+			return std::fabs(a - b) < epsilon;
+		}
+
 		void init()
 		{
 			//Stores all the handlers for ImGui
@@ -41,7 +47,7 @@ namespace ui
 			g_foreground_drawlist = ImGui::GetForegroundDrawList();
 			g_background_drawlist = ImGui::GetBackgroundDrawList();
 			//If we change display sizes, it will die.
-			if (g_resolution.x != g_imgui_io->DisplaySize.x || g_resolution.y != g_imgui_io->DisplaySize.y)
+			if (!are_floats_equal(g_resolution.x, g_imgui_io->DisplaySize.x) || !are_floats_equal(g_resolution.y, g_imgui_io->DisplaySize.y))
 			{
 				g_resolution = g_imgui_io->DisplaySize;
 			}
@@ -271,8 +277,8 @@ namespace ui
 
 			void input_check_handler()
 			{
-				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);		// RB + R-Arrow
-				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);			// A
+				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);	// RB + R-Arrow
+				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);				// A
 				check_if_pressed(m_enter_key_pressed, 2, 191, VK_RETURN, m_backDelay);			// B
 				check_if_pressed(m_up_key_pressed, 2, 172, VK_UP, m_verticalDelay);				// U-Arrow
 				check_if_pressed(m_down_key_pressed, 2, 173, VK_DOWN, m_verticalDelay);			// D-Arrow
