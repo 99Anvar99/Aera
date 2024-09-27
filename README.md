@@ -66,7 +66,7 @@ You can change that in the code to any desired location
 
 ## License
 
-- https://github.com/Lightning-X/Aera?tab=License-1-ov-file
+- [LICENSE](LICENSE)
 
 ## Authors
 
