@@ -18,9 +18,13 @@ namespace script
 	void on_tick()
 	{
 		util::vehicle::cache_model_table();
-		LOG(Info, "Cached vehicle model table");
+		LOG(Info, "Cached vehicle model table")
 
-		while (commands::g_manager.getCommands().empty()) { fiber::current()->sleep(100ms); }
+		while (commands::g_manager.getCommands().empty())
+		{
+			fiber::current()->sleep(100ms);
+		}
+
 		ui::menu::push(ui::submenus::homeSubmenu::get());
 
 		while (true)

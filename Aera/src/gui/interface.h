@@ -132,7 +132,7 @@ namespace ui
 #define VALID_OPTION OPTION_COUNT && OPTIONS[OPTION_INDEX]
 #define CURRENT_OPTION static_cast<abstractOption&>(*OPTIONS[OPTION_INDEX])
 #define IS_STACK_VALID !g_menus.empty() && g_menus.size() > NULL
-		extern void push(submenu* sub);
+		extern void push(const submenu* sub);
 		extern void pop();
 	}
 

@@ -29,8 +29,8 @@ void thread_function()
 void init()
 {
 	exceptions::init_exception_handler();
-	thread_pool_instance = std::make_unique<thread_pool>();
 	g_logger = std::make_unique<logger>(BRAND);
+	thread_pool_instance = std::make_unique<thread_pool>();
 	pointers::scan_all();
 	//Wait until game is loaded
 	if (*pointers::g_loadingScreenState != eLoadingScreenState::Finished)

@@ -32,12 +32,11 @@ public:
 	void remove_base(cc* base_id)
 	{
 		std::lock_guard lck(m_mutex);
-		for (const auto& key : m_fibers | std::views::keys)
+		for (const auto& key : m_fibers)
 		{
-			if (const auto fbr_id{key}; strstr(fbr_id, base_id))
+			if (std::string_view{ key.first }.starts_with(base_id))
 			{
-				m_fibers.erase(fbr_id);
-				return;
+				m_fibers.erase(key.first);
 			}
 		}
 	}
@@ -52,9 +51,9 @@ public:
 	{
 		static bool ensure_main_fiber{(ConvertThreadToFiber(nullptr), true)};
 		std::lock_guard lck(m_mutex);
-		for (const auto& val : m_fibers | std::views::values)
+		for (const auto& val : m_fibers)
 		{
-			val->tick();
+			val.second->tick();
 		}
 	}
 

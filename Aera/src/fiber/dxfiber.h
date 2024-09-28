@@ -37,8 +37,10 @@ public:
 		}
 
 		std::lock_guard lck(m_mutex);
-		for (const auto& val : m_fibers | std::views::values)
-			val->tick();
+		for (const auto& val : m_fibers)
+		{
+			val.second->tick();
+		}
 	}
 
 	std::recursive_mutex m_mutex;

@@ -96,12 +96,12 @@ void thread_pool::run()
 		const auto source_file = std::filesystem::path(m_source_location.file_name()).filename().string();
 
 		std::cout << "Thread " << std::this_thread::get_id() << " executing: " << source_file << ":" <<
-			m_source_location.line() << std::endl;
+			m_source_location.line() << '\n';
 
 		std::invoke(m_func);
 
 		--m_busy_threads_;
 	}
 
-	LOG_DEBUG("Thread {} exiting...", std::this_thread::get_id()._Get_underlying_id())
+	std::cout << "Thread " << std::this_thread::get_id() << " exiting" << '\n';
 }
