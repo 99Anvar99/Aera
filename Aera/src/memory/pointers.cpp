@@ -32,7 +32,7 @@ namespace pointers
 		g_networkObjectMgr = scan("NOM", "48 8B 0D ? ? ? ? 45 33 C0 E8 ? ? ? ? 33 FF 4C 8B F0").mov().as<decltype(g_networkObjectMgr)>();
 		g_network = scan("N", "48 8B 0D ? ? ? ? 48 8B D7 E8 ? ? ? ? 84 C0 75 17").mov().as<decltype(g_network)>();
 		g_isSessionActive = scan("ISA", "40 38 35 ? ? ? ? 75 0E 4C 8B C3").cmp().as<decltype(g_isSessionActive)>();
-		g_requestControl = scan("RC", "E8 ? ? ? ? EB 3E 48 8B D3").call().as<decltype(g_requestControl)>();
+		g_requestControl = scan("RC", "E8 ? ? ? ? EB 50 48 8B D3").call().as<decltype(g_requestControl)>();
 		g_pedFactory = scan("PF", "48 8B 05 ? ? ? ? 48 8B 48 08 48 85 C9 74 52").mov().as<decltype(g_pedFactory)>();
 		g_replayInterface = scan("RI", "0F B7 44 24 ? 66 89 44 4E").add(0x1C).mov().as<decltype(g_replayInterface)>();
 		g_httpStartRequest = scan("HSR", "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 48 8B D9 48 81 C1 28 05").as<decltype(g_httpStartRequest)>();
