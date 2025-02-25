@@ -19,9 +19,6 @@
     <ClInclude Include="src\rage\commands\types.h">
       <Filter>src\rage\commands</Filter>
     </ClInclude>
-    <ClInclude Include="src\rage\engine.h">
-      <Filter>src\rage</Filter>
-    </ClInclude>
     <ClInclude Include="src\fiber\pool.h">
       <Filter>src\fiber</Filter>
     </ClInclude>
@@ -223,7 +220,6 @@
     <ClInclude Include="src\script\submenus\home\spawner\spawner.h" />
     <ClInclude Include="src\script\submenus\home\recovery\recovery.h" />
     <ClInclude Include="src\script\submenus\home\miscellaneous\miscellaneous.h" />
-    <ClInclude Include="src\fiber\dxfiber.h" />
     <ClInclude Include="src\fiber\threads.h" />
     <ClInclude Include="src\util\imageLoaderHelpers.h" />
     <ClInclude Include="src\imgui\stb_image.h" />
@@ -366,6 +362,7 @@
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\hooking\hooks\http_start_request.cpp" />
+    <ClCompile Include="src\hooking\hooks\cRunGtaThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

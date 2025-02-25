@@ -8,6 +8,7 @@ namespace pointers
 
 	namespace types
 	{
+		using cRunGtaThread = bool(*)(uint32_t ops_to_excecute);
 		using scrThreadInit = void(*)(rage::scrThread* thread);
 		using scrThreadTick = rage::eThreadState(*)(rage::scrThread* thread, u32 opsToExecute);
 		using scrThreadKill = void(*)(rage::scrThread* thread);
@@ -27,7 +28,7 @@ namespace pointers
 		using get_joaated_gxt_label_from_table_t = cc * (*)(void* This, u32 hash);
 		using request_control = void(*)(rage::netObject* net_object);
 	}
-
+	inline types::cRunGtaThread g_runGtaThread{};
 	inline types::scrThreadInit g_scrThreadInit{};
 	inline types::scrThreadTick g_scrThreadTick{};
 	inline types::scrThreadKill g_scrThreadKill{};

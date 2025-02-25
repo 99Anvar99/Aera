@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include "commands/features.h"
-#include "fiber/dxfiber.h"
 #include "gui/gui.h"
+#include <util/imageLoaderHelpers.h>
 
 // Create font using existing font path
 ImFont* create_im_font(const fs::path& path, float size, const ImFontConfig* config, const ImWchar* glyph_ranges = nullptr)
@@ -67,7 +67,9 @@ renderer::~renderer()
 
 void renderer::on_present()
 {
-	g_dx_fiber_mgr.tick();
+	ui::drawing::tick();
+	image_loader::header_handler();
+	ui::draw();
 }
 
 LRESULT renderer::wndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

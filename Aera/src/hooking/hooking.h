@@ -9,6 +9,7 @@ static constexpr auto g_swapchain_resizebuffers_index = 13;
 
 struct hooks
 {
+	static bool c_run_gta_thread(uint32_t ops_to_execute);
 	static void* c_task_jump_constructor(u64 a1, u32 flags);
 	static void* c_task_fall_constructor(u64 a1, u32 flags);
 	static bool http_start_request(void* _this, const char* uri);
@@ -56,6 +57,7 @@ public:
 
 	MinHook m_minhook;
 	hookVFT m_DX;
+	detour m_cRunGtaThread;
 	detour m_cTaskJumpConstructor;
 	detour m_cTaskFallConstructor;
 	detour m_http_start_request;

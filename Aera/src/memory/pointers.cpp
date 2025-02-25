@@ -6,6 +6,7 @@ namespace pointers
 {
 	void scan_all()
 	{
+		g_runGtaThread = scan("RGT", "45 33 F6 8B E9 85 C9 B8").sub(0x1F).as<decltype(g_runGtaThread)>();
 		g_loadingScreenState = scan("LSS", "83 3D ? ? ? ? ? 75 ? 8B 43").lea().add(1).as<decltype(g_loadingScreenState)>();
 		g_scrThreadInit = scan("STI", "83 89 40 01 00 00 FF 83").as<decltype(g_scrThreadInit)>();
 		g_scrThreadTick = scan("STT", "80 B9 4E 01 00 00 00").sub(0xF).as<decltype(g_scrThreadTick)>();

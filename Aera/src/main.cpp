@@ -9,7 +9,6 @@
 #include "commands/commands.h"
 #include "exceptions/handler.h"
 #include "core/logger.h"
-#include "fiber/dxfiber.h"
 #include "gui/gui.h"
 #include "thread pool/threadpool.h"
 #include "util/imageLoaderHelpers.h"
@@ -52,19 +51,6 @@ void init()
 	g_manager.add("playerManager", &util::network::manager::onTick);
 	g_manager.add("commandStream", &commands::engine::commandStreamTick);
 	g_manager.add("script", &script::on_tick);
-	//Create our own GTA thread, meant to replace a main hook
-	create_thread(&g_manager);
-	// DX Thread for drawing Menu
-	g_dx_fiber_mgr.add(std::make_unique<fiber>([]
-	{
-		while (true)
-		{
-			ui::drawing::tick();
-			image_loader::header_handler();
-			ui::draw();
-			fiber::current()->sleep();
-		}
-	}), "dS");
 }
 
 void loop()
@@ -79,11 +65,8 @@ void loop()
 
 void uninit()
 {
-	//Restore the GTA threads we allocated at init
-	engine::cleanup_threads();
 	//Cleanup fibers
 	g_manager.destroy();
-	g_dx_fiber_mgr.remove_all();
 	//Disable hooks
 	hooking_instance->disable();
 	//Cleanup renderer

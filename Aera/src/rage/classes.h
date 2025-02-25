@@ -1137,7 +1137,7 @@ namespace rage
 	class tlsContext
 	{
 	public:
-		char gap0[180];
+		char gap0[8884];
 		uint8_t m_unk_byte; // 0xB4
 		char gapB5[3];
 		sysMemAllocator* m_allocator; // 0xB8
@@ -1146,7 +1146,7 @@ namespace rage
 		uint32_t m_console_smth; // 0xD0
 		char gapD4[188];
 		uint64_t m_unk; // 0x190
-		char gap198[1728];
+		char gap198[1720];
 		scrThread* m_script_thread; // 0x858
 		bool m_is_script_thread_active; // 0x860
 
@@ -1162,7 +1162,7 @@ namespace rage
 #endif
 	};
 
-	static_assert(sizeof(tlsContext) == 0x861);
+	static_assert(sizeof(tlsContext) == 0x2A59);
 #pragma pack(pop)
 
 	union scrValue

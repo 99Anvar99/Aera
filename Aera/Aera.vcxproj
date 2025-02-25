@@ -192,7 +192,6 @@
     <ClInclude Include="src\core\logger.h" />
     <ClInclude Include="src\exceptions\disassembler.h" />
     <ClInclude Include="src\exceptions\handler.h" />
-    <ClInclude Include="src\fiber\dxfiber.h" />
     <ClInclude Include="src\fiber\threads.h" />
     <ClInclude Include="src\gui\lerping_float.h" />
     <ClInclude Include="src\gui\types\break_option.h" />
@@ -240,7 +239,6 @@
     <ClInclude Include="src\minhook\trampoline.h" />
     <ClInclude Include="src\rage\classdefs.h" />
     <ClInclude Include="src\rage\classes.h" />
-    <ClInclude Include="src\rage\engine.h" />
     <ClInclude Include="src\rage\enums.h" />
     <ClInclude Include="src\pch\framework.h" />
     <ClInclude Include="src\memory\mem.h" />
@@ -284,6 +282,7 @@
     <ClCompile Include="src\commands\features.cpp" />
     <ClCompile Include="src\commands\manager\manager.cpp" />
     <ClCompile Include="src\exceptions\handler.cpp" />
+    <ClCompile Include="src\hooking\hooks\cRunGtaThread.cpp" />
     <ClCompile Include="src\hooking\hooks\http_start_request.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\imgui_demo.cpp" />

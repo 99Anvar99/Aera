@@ -4,6 +4,7 @@
 hooking::hooking() :
 	m_minhook(),
 	m_DX(VFT({*pointers::g_swapChain, g_swapchain_num_funcs}), VFT({ VFTFunctionData(&hooks::present, g_swapchain_present_index), VFTFunctionData(&hooks::resize_buffers, g_swapchain_resizebuffers_index) })),
+	m_cRunGtaThread("CRGT", pointers::g_runGtaThread, &hooks::c_run_gta_thread),
 	m_cTaskJumpConstructor("CTJC", pointers::g_cTaskJumpConstructor, &hooks::c_task_jump_constructor),
 	m_cTaskFallConstructor("CTFC", pointers::g_cTaskFallConstructor, &hooks::c_task_fall_constructor),
 	m_http_start_request("HSR", pointers::g_httpStartRequest, &hooks::http_start_request),

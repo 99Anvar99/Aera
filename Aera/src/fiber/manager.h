@@ -1,9 +1,10 @@
 #pragma once
 #include "pch/pch.h"
-#include "rage/engine.h"
 #include "fiber.h"
+#include <functional>
+#include "threads.h"
 
-class manager : public engine::thread
+class manager
 {
 public:
 	void add(cc* id, fnptr<void()> fn, bool log = true)
@@ -47,7 +48,12 @@ public:
 		m_fibers.clear();
 	}
 
-	void do_run() override
+	void on_game_tick()
+	{
+		execute_as_script("main_persistent"_joaat, [this]() { this->do_run(); });
+	}
+
+	void do_run()
 	{
 		static bool ensure_main_fiber{(ConvertThreadToFiber(nullptr), true)};
 		std::lock_guard lck(m_mutex);

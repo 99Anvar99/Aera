@@ -2,43 +2,28 @@
 #include "memory/pointers.h"
 #include "pch/pch.h"
 
-inline rage::scrThread** g_cached_scr_thread{};
-inline rage::sysMemAllocator** g_cached_scr_allocator{};
-inline rage::sysMemAllocator** g_cached_tls_entry{};
-inline bool call_thread_cache_inside_a_non_script_hook{};
-
-inline void cache_thread_handles()
+template<typename F, typename... Args>
+void execute_as_script(rage::scrThread* thread, F&& callback, Args&&... args)
 {
-	g_cached_scr_allocator = rage::sysMemAllocator::getPointer();
-	g_cached_tls_entry = rage::sysMemAllocator::getEntryPointer();
-	g_cached_scr_thread = rage::scrThread::getPointer();
+	auto tls_ctx   = rage::tlsContext::get();
+	auto og_thread = tls_ctx->m_script_thread;
+	tls_ctx->m_script_thread           = thread;
+	tls_ctx->m_is_script_thread_active = true;
+	std::invoke(std::forward<F>(callback), std::forward<Args>(args)...);
+	tls_ctx->m_script_thread           = og_thread;
+	tls_ctx->m_is_script_thread_active = og_thread != nullptr;
 }
 
-template <typename Call, typename... Arguments>
-	requires is_invokable_with_args<Call, Arguments...>
-void execute_under_hybrid_thr(Call&& callback, Arguments&&... args)
+template<typename F, typename... Args>
+void execute_as_script(uint32_t script_hash, F&& callback, Args&&... args)
 {
-	if (!g_cached_scr_allocator || !g_cached_tls_entry || !g_cached_scr_thread)
+	for (auto thread : *pointers::g_gtaThreads)
 	{
-		if (!call_thread_cache_inside_a_non_script_hook)
-			call_thread_cache_inside_a_non_script_hook = true;
+		if (!thread || !thread->m_serialised.m_thread_id || thread->m_serialised.m_script_hash != script_hash)
+			continue;
+
+		execute_as_script(thread, callback, args...);
 		return;
-	}
-	static auto tls_ctx = rage::tlsContext::get();
-	if (g_cached_scr_allocator != nullptr)
-	{
-		auto og_thr = rage::scrThread::get();
-		auto og_alloc = rage::sysMemAllocator::get();
-		auto og_a_tls_entry = rage::sysMemAllocator::getEntry();
-		tls_ctx->m_allocator2 = *g_cached_tls_entry;
-		tls_ctx->m_script_thread = *g_cached_scr_thread;
-		tls_ctx->m_is_script_thread_active = true;
-		tls_ctx->m_allocator = *g_cached_scr_allocator;
-		std::invoke(std::forward<Call>(callback), std::forward<Arguments>(args)...);
-		tls_ctx->m_allocator2 = og_a_tls_entry;
-		tls_ctx->m_script_thread = og_thr;
-		tls_ctx->m_is_script_thread_active = og_thr != nullptr;
-		tls_ctx->m_allocator = og_alloc;
 	}
 }
 
