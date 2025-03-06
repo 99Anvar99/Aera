@@ -223,7 +223,7 @@ namespace rage
 	template <typename t>
 	class ObfVar;
 	using Obf16 = ObfVar<unsigned short>;
-    using Obf32 = ObfVar<unsigned int>;
+	using Obf32 = ObfVar<unsigned int>;
 	class rlSessionDetail;
 	class rlMatchmakingFindResult;
 	class netGamePlayerData;

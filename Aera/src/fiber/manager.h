@@ -35,7 +35,7 @@ public:
 		std::lock_guard lck(m_mutex);
 		for (const auto& key : m_fibers)
 		{
-			if (std::string_view{ key.first }.starts_with(base_id))
+			if (std::string_view{key.first}.starts_with(base_id))
 			{
 				m_fibers.erase(key.first);
 			}

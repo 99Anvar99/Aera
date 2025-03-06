@@ -95,8 +95,8 @@ namespace ui
 			{
 				auto potential_new_scroll_position = m_current - max_visible_options + 3;
 				m_scrollPosition = potential_new_scroll_position < m_options.size() - max_visible_options
-				? potential_new_scroll_position
-				: std::max(m_options.size() - max_visible_options, static_cast<size_t>(0));
+					                   ? potential_new_scroll_position
+					                   : std::max(m_options.size() - max_visible_options, static_cast<size_t>(0));
 			}
 		}
 	};

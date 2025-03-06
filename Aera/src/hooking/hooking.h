@@ -15,7 +15,8 @@ struct hooks
 	static bool http_start_request(void* _this, const char* uri);
 	static LPVOID convert_thread_to_fiber(LPVOID param);
 
-	static HRESULT resize_buffers(IDXGISwapChain* swap_chain, UINT buffer_count, UINT width, UINT height, DXGI_FORMAT new_format, UINT swap_chain_flags);
+	static HRESULT resize_buffers(IDXGISwapChain* swap_chain, UINT buffer_count, UINT width, UINT height,
+	                              DXGI_FORMAT new_format, UINT swap_chain_flags);
 	static HRESULT present(IDXGISwapChain* swap_chain, UINT sync_interval, UINT flags);
 };
 

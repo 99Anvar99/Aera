@@ -73,7 +73,8 @@ bool CGameScriptHandlerNetComponent::force_host()
 void CNetComplaintMgr::Add(uint64_t PeerAddress, bool UseAll, bool SpoofAddress)
 {
 	auto net_mgr = (*pointers::g_networkPlayerMgr);
-	if (HasComplaint(PeerAddress) || PeerAddress == net_mgr->m_local_net_player->m_player_info->m_gamer_info.m_peer_address)
+	if (HasComplaint(PeerAddress) || PeerAddress == net_mgr->m_local_net_player->m_player_info->m_gamer_info.
+	                                                         m_peer_address)
 		return;
 	auto old_token = m_peer_address;
 	if (m_peer_address == old_token && SpoofAddress)

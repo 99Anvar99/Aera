@@ -77,7 +77,7 @@ public:
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), static_cast<u16>(color));
 		const std::string& msg{std::vformat(fmt, std::make_format_args(args...))};
 		m_con << type << " | " << msg << "\n" << std::flush;
-	        m_file << type << " | " << msg << "\n" << std::flush;
+		m_file << type << " | " << msg << "\n" << std::flush;
 	}
 
 	template <typename... Arguments>

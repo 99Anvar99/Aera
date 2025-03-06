@@ -12,7 +12,6 @@ namespace ui::submenus::settings
 {
 	class commandSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

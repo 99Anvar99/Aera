@@ -9,9 +9,7 @@
 #include "commands/commands.h"
 #include "exceptions/handler.h"
 #include "core/logger.h"
-#include "gui/gui.h"
 #include "thread pool/threadpool.h"
-#include "util/imageLoaderHelpers.h"
 
 std::unique_ptr<hooking> hooking_instance{};
 std::unique_ptr<renderer> renderer_instance{};

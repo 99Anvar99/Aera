@@ -12,7 +12,6 @@ namespace ui::submenus
 {
 	class weaponsSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

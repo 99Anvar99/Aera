@@ -12,7 +12,6 @@ namespace ui::submenus
 {
 	class networkSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

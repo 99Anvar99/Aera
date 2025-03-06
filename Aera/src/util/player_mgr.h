@@ -13,7 +13,6 @@ namespace util::network
 	public:
 		void update(CNetGamePlayer* netGamePlayer);
 
-	public:
 		bool valid()
 		{
 			return m_netGamePlayer && m_netGamePlayer->m_player_id != UINT8_MAX;
@@ -24,7 +23,6 @@ namespace util::network
 			return valid();
 		}
 
-	public:
 		u8 m_index{};
 		bool m_host{};
 		std::string m_name{};
@@ -48,7 +46,6 @@ namespace util::network
 		u64 m_platformData{};
 		u16 m_port{};
 
-	public:
 		struct data
 		{
 			std::string m_name{};
@@ -112,7 +109,6 @@ namespace util::network
 		static void onTick();
 		void loop();
 
-	public:
 		player& get(u16 index)
 		{
 			return m_players[index];
@@ -220,7 +216,6 @@ namespace util::network
 			return get(g_selectedPlayer);
 		}
 
-	public:
 		player& operator[](u16 index)
 		{
 			return get(index);
@@ -236,13 +231,11 @@ namespace util::network
 			return m_players.end();
 		}
 
-	public:
 		bool online()
 		{
 			return pointers::g_networkPlayerMgr && mgr() && getLocalPlayer();
 		}
 
-	public:
 		std::map<u16, player> m_players{};
 		u16 m_playerCount{};
 		u16 m_playerLimit{};

@@ -47,7 +47,8 @@ namespace ui
 			g_foreground_drawlist = ImGui::GetForegroundDrawList();
 			g_background_drawlist = ImGui::GetBackgroundDrawList();
 			//If we change display sizes, it will die.
-			if (!are_floats_equal(g_resolution.x, g_imgui_io->DisplaySize.x) || !are_floats_equal(g_resolution.y, g_imgui_io->DisplaySize.y))
+			if (!are_floats_equal(g_resolution.x, g_imgui_io->DisplaySize.x) || !are_floats_equal(
+				g_resolution.y, g_imgui_io->DisplaySize.y))
 			{
 				g_resolution = g_imgui_io->DisplaySize;
 			}
@@ -114,7 +115,8 @@ namespace ui
 			}
 		}
 
-		void rectangle(const ImVec2& pos, const ImVec2& size, color color, bool background, float rounding, ImDrawFlags flags)
+		void rectangle(const ImVec2& pos, const ImVec2& size, color color, bool background, float rounding,
+		               ImDrawFlags flags)
 		{
 			auto draw_list{background ? g_background_drawlist : g_foreground_drawlist};
 			const auto& scaled_pos{convert_coord_types(pos)};
@@ -164,7 +166,7 @@ namespace ui
 			{
 				helpers::rotation::rotate_start(draw_list);
 			}
-			draw_list->AddImage(resource, pos, size, {}, {1, 1}, color.pack());
+			draw_list->AddImage(reinterpret_cast<ImTextureID>(resource), pos, size, {}, {1, 1}, color.pack());
 			if (angle)
 			{
 				helpers::rotation::rotate_end(draw_list, helpers::degrees_to_radians(angle));
@@ -213,7 +215,7 @@ namespace ui
 			void check_if_pressed(bool& value, int padIdx, int key, int keyboardKey, size_t delay)
 			{
 				static timer t;
-				if (GetForegroundWindow() != pointers::g_hwnd) 
+				if (GetForegroundWindow() != pointers::g_hwnd)
 					return;
 
 				bool key_pressed = GetAsyncKeyState(keyboardKey) & 1;
@@ -239,7 +241,7 @@ namespace ui
 			void check_if_pressed(bool& value, int padIdx, int key, int key2, int keyboardKey, size_t delay)
 			{
 				static timer t;
-				if (GetForegroundWindow() != pointers::g_hwnd) 
+				if (GetForegroundWindow() != pointers::g_hwnd)
 					return;
 
 				bool key_pressed = GetAsyncKeyState(keyboardKey) & 1;
@@ -277,13 +279,13 @@ namespace ui
 
 			void input_check_handler()
 			{
-				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay);	// RB + R-Arrow
-				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay);				// A
-				check_if_pressed(m_enter_key_pressed, 2, 191, VK_RETURN, m_backDelay);			// B
-				check_if_pressed(m_up_key_pressed, 2, 172, VK_UP, m_verticalDelay);				// U-Arrow
-				check_if_pressed(m_down_key_pressed, 2, 173, VK_DOWN, m_verticalDelay);			// D-Arrow
-				check_if_pressed(m_left_key_pressed, 2, 174, VK_LEFT, m_horizontalDelay);		// L-Arrow
-				check_if_pressed(m_right_key_pressed, 2, 175, VK_RIGHT, m_horizontalDelay);		// R-Arrow
+				check_if_pressed(m_open_key_pressed, 2, 227, 175, VK_INSERT, m_openDelay); // RB + R-Arrow
+				check_if_pressed(m_back_key_pressed, 2, 194, VK_BACK, m_enterDelay); // A
+				check_if_pressed(m_enter_key_pressed, 2, 191, VK_RETURN, m_backDelay); // B
+				check_if_pressed(m_up_key_pressed, 2, 172, VK_UP, m_verticalDelay); // U-Arrow
+				check_if_pressed(m_down_key_pressed, 2, 173, VK_DOWN, m_verticalDelay); // D-Arrow
+				check_if_pressed(m_left_key_pressed, 2, 174, VK_LEFT, m_horizontalDelay); // L-Arrow
+				check_if_pressed(m_right_key_pressed, 2, 175, VK_RIGHT, m_horizontalDelay); // R-Arrow
 			}
 
 			void actions()
@@ -294,7 +296,7 @@ namespace ui
 					g_open = !g_open;
 				}
 
-				if (!g_open) 
+				if (!g_open)
 					return;
 
 				struct action_mapping
@@ -324,7 +326,6 @@ namespace ui
 					}
 				}
 			}
-
 		}
 	}
 }

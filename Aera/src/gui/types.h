@@ -14,7 +14,8 @@ namespace ui
 			std::string text, i32 font, float textSize, color textColor, eJustify textJustify,
 			bool enabled = true
 		) :
-			m_text(std::move(text)), m_font(font), m_textSize(textSize), m_textColor(textColor), m_textJustify(textJustify),
+			m_text(std::move(text)), m_font(font), m_textSize(textSize), m_textColor(textColor),
+			m_textJustify(textJustify),
 			m_enabled(enabled)
 		{
 		}
@@ -106,7 +107,8 @@ namespace ui
 			m_scrollSpeed(scrollSpeed),
 			m_breakFont(breakFont), m_breakTextSize(breakTextSize), m_breakTextColor(breakTextColor),
 			m_breakTextJustify(breakTextJustify),
-			m_arrow(std::move(arrow)), m_arrowColor(arrowColor), m_arrowSelectedColor(arrowSelectedColor), m_arrowSize(arrowSize),
+			m_arrow(std::move(arrow)), m_arrowColor(arrowColor), m_arrowSelectedColor(arrowSelectedColor),
+			m_arrowSize(arrowSize),
 			m_toggle(std::move(toggle)), m_toggleColor(toggleColor), m_toggleSelectedColor(toggleSelectedColor),
 			m_toggleSize(toggleSize)
 		{
@@ -208,10 +210,8 @@ namespace ui
 		{
 		}
 
-	public:
 		void draw();
 
-	public:
 		std::string m_text{};
 		float m_size{};
 		float m_height{};

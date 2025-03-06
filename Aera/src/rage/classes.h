@@ -149,7 +149,6 @@ namespace rage
 #pragma optimize("", on)
 	class netLoggingInterface
 	{
-	public:
 	};
 
 	class nonPhysicalPlayerDataBase
@@ -201,11 +200,9 @@ namespace rage
 		{
 		}
 
-	public:
 		uint64_t m_rockstar_id; //0x0000
 		uint8_t m_platform; //0x0008
 		uint8_t m_flag; //0x0009
-	public:
 		bool deserialize(datBitBuffer& buf);
 		bool serialize(datBitBuffer& buf);
 	}; //Size: 0x0010
@@ -358,13 +355,11 @@ namespace rage
 	template <typename T>
 	class fwRefAwareBaseImpl : public T
 	{
-	private:
 		void* m_ref; //0x0008
 	};
 
 	class fwRefAwareBase : public fwRefAwareBaseImpl<datBase>
 	{
-	public:
 	};
 
 	static_assert(sizeof(fwRefAwareBase) == 0x10);
@@ -506,7 +501,6 @@ namespace rage
 #pragma pack(pop)
 	class phBoundBase : public pgBase
 	{
-	public:
 	}; //Size: 0x0010
 	static_assert(sizeof(phBoundBase) == 0x10);
 #pragma pack(push, 4)
@@ -1024,7 +1018,6 @@ namespace rage
 		bool WriteArray(void* array, int32_t size);
 		bool ReadArray(void* array, int32_t size);
 
-	public:
 		uint8_t* m_data; //0x0000
 		uint32_t m_bitOffset; //0x0008
 		uint32_t m_maxBit; //0x000C
@@ -1155,6 +1148,7 @@ namespace rage
 		{
 			return *reinterpret_cast<tlsContext**>(__readgsqword(0x58));
 		}
+
 		static tlsContext** get_pointer()
 		{
 			return reinterpret_cast<tlsContext**>(__readgsqword(0x58));
@@ -1204,7 +1198,6 @@ namespace rage
 			return tlsContext::get()->m_script_thread;
 		}
 
-	public:
 #pragma pack(pop)
 #pragma optimize("", off)
 		class Info
@@ -1433,7 +1426,6 @@ namespace rage
 		virtual size_t GetMemoryUsed(int memoryBucket) = 0;
 		virtual size_t GetMemoryAvailable() = 0;
 
-	public:
 		static sysMemAllocator* UpdateAllocatorValue()
 		{
 			auto tls = tlsContext::get();
@@ -1531,7 +1523,6 @@ namespace rage
 		{
 		};
 
-	public:
 		virtual ~scriptHandler() = default; // 0 (0x00)
 		virtual bool _0x08() = 0; // 1 (0x08)
 		virtual void _0x10() = 0; // 2 (0x10)
@@ -1558,7 +1549,6 @@ namespace rage
 		virtual void _0x88() = 0; //17 (0x88)
 		virtual void _0x90() = 0; //18 (0x90)
 		virtual void _0x98() = 0; //19 (0x98)
-	public:
 		void* unk_0008; //0x0008
 		void* unk_0010; //0x0010
 		scrThread* m_script_thread; //0x0018
@@ -1615,7 +1605,6 @@ namespace rage
 		virtual bool _0x108() = 0;
 		virtual void* _0x110() = 0;
 		virtual bool _0x118() = 0; //related to above function
-	public:
 		scriptHandler* m_script_handler; //0x08
 	};
 
@@ -1812,7 +1801,6 @@ namespace rage
 		{
 		};
 
-	public:
 		virtual ~netObjectMgrBase() = default;
 		virtual void Initialize() = 0;
 		virtual void Shutdown() = 0;
@@ -1847,13 +1835,11 @@ namespace rage
 		                                  uint32_t ack_code) = 0;
 		virtual void _0xC8() = 0;
 
-	public:
 		atDList<atDNetObjectNode> m_objects_owned_by_player[32];
 	};
 
 	class CEntityDrawHandler : public fwDrawData
 	{
-	public:
 	};
 
 	static_assert(sizeof(CEntityDrawHandler) == 0x2C);
@@ -1961,7 +1947,6 @@ namespace rage
 		virtual int32_t _0x70();
 		virtual void* _0x78();
 
-	public:
 		char pad_0008[40]; //0x0008
 		bool m_initialized; //0x0030
 		bool m_initialized_2; //0x0031
@@ -2109,7 +2094,6 @@ namespace rage
 
 		~rlJSON() { delete[] m_buffer; }
 
-	public:
 		uint32_t unk_0000{}; //0x0000
 		uint32_t unk_0004{}; //0x0004
 		char* m_buffer{}; //0x0008
@@ -2171,7 +2155,6 @@ namespace rage
 		virtual bool to_json(rlJSON* jsonStream) { return false; }; //Prints the metric out to a JSON stream
 		virtual int get_size() { return 0; }; //Size in bytes of derived object (for copying)
 		virtual uint32_t get_name_hash() { return 0; }; //Joaat of short name
-	public:
 		bool using_a()
 		{
 			return metric_a() == 6;
@@ -2194,46 +2177,46 @@ namespace rage
 	};
 
 	template <typename T>
-    class ObfVar
-    {
-	    T m_unk1;
-        T m_unk2;
-        T m_unk3;
-        T m_unk4;
+	class ObfVar
+	{
+		T m_unk1;
+		T m_unk2;
+		T m_unk3;
+		T m_unk4;
 
-    public:
-        T getData() const
-        {
-            T v105 = m_unk4;
-            T v28 = m_unk1 & v105;
-            T v94 = m_unk2 & ~v105;
-            return v28 | v94;
-        }
+	public:
+		T getData() const
+		{
+			T v105 = m_unk4;
+			T v28 = m_unk1 & v105;
+			T v94 = m_unk2 & ~v105;
+			return v28 | v94;
+		}
 
-        operator T() const
-        {
-            return getData();
-        }
+		operator T() const
+		{
+			return getData();
+		}
 
 #if _WIN32
-        void setData(T val)
-        {
-            auto seed = static_cast<T>(time(nullptr)); // Use static_cast to ensure the correct type
-            m_unk3 = seed;
-            seed = static_cast<T>(time(nullptr));
-            m_unk4 = seed;
+		void setData(T val)
+		{
+			auto seed = static_cast<T>(time(nullptr)); // Use static_cast to ensure the correct type
+			m_unk3 = seed;
+			seed = static_cast<T>(time(nullptr));
+			m_unk4 = seed;
 
-            T v48 = val & ~seed;
-            m_unk1 = seed & val;
-            m_unk2 = v48;
-        }
+			T v48 = val & ~seed;
+			m_unk1 = seed & val;
+			m_unk2 = v48;
+		}
 
-        void operator =(T val)
-        {
-            setData(val);
-        }
+		void operator =(T val)
+		{
+			setData(val);
+		}
 #endif
-    };
+	};
 
 	class rlSessionDetail
 	{
@@ -2737,7 +2720,6 @@ namespace rage
 		void* m_backing; //0x0070
 		ID3D11ShaderResourceView* m_shader; //0x0078
 		char pad_0080[40]; //0x0080
-	public:
 		void SetShader(ID3D11ShaderResourceView* shader, ID3D11Resource* resource = nullptr)
 		{
 			m_shader = shader;
@@ -2806,7 +2788,6 @@ namespace rage
 
 	class grcRenderTarget : public grcTexture
 	{
-	public:
 	}; //Size: 0x00A8
 	static_assert(sizeof(grcRenderTarget) == 0xA8);
 
@@ -2836,7 +2817,6 @@ namespace rage
 		virtual void PushRenderTarget(void* a1, grcRenderTarget* target, void* a3, int a4, bool a5, bool a6) = NULL;
 		virtual void PopRenderTarget(void* a1, grcRenderTarget* target) = NULL;
 
-	public:
 		char pad_0008[8]; //0x0008
 	}; //Size: 0x0010
 	static_assert(sizeof(grcTextureFactory) == 0x10);
@@ -2902,7 +2882,6 @@ namespace rage
 		uint8_t* m_mask; //0x0040
 		uint32_t m_count; //0x0048
 		uint32_t m_size; //0x0052
-	public:
 		auto BitshiftMask(uint32_t index, uint8_t amount) { return m_mask[index] >> amount; }
 
 		bool IsElementValid(uint32_t index)
@@ -4268,11 +4247,9 @@ public:
 	{
 	}
 
-public:
 	alignas(8) float x{};
 	alignas(8) float y{};
 
-public:
 	rage::vector2 deserialize()
 	{
 		return {x, y};
@@ -4283,7 +4260,6 @@ public:
 		return x == 0.f && y == 0.f;
 	}
 
-public:
 	Vector2 operator*(const float amount)
 	{
 		return {x * amount, y * amount};
@@ -4390,12 +4366,10 @@ public:
 	{
 	}
 
-public:
 	alignas(8) float x{};
 	alignas(8) float y{};
 	alignas(8) float z{};
 
-public:
 	rage::vector3 deserialize()
 	{
 		return {x, y, z};
@@ -4411,7 +4385,6 @@ public:
 		return x == 0.f || y == 0.f || z == 0.f;
 	}
 
-public:
 	Vector3 operator*(const float amount)
 	{
 		return {x * amount, y * amount, z * amount};
@@ -4536,13 +4509,11 @@ public:
 	{
 	}
 
-public:
 	alignas(8) float x{};
 	alignas(8) float y{};
 	alignas(8) float z{};
 	alignas(8) float w{};
 
-public:
 	rage::vector4 deserialize()
 	{
 		return {x, y, z, w};
@@ -4553,7 +4524,6 @@ public:
 		return x == 0.f && y == 0.f && z == 0.f && w == 0.f;
 	}
 
-public:
 	Vector4 operator*(const float amount)
 	{
 		return {x * amount, y * amount, z * amount, w * amount};
@@ -5186,7 +5156,6 @@ static_assert(sizeof(CPedFactory) == 0x10);
 
 class CPedModelInfo : public rage::CBaseModelInfo
 {
-public:
 }; //Size: 0x00B0
 static_assert(sizeof(CPedModelInfo) == 0xB0);
 
@@ -5405,52 +5374,52 @@ static_assert(sizeof(ClanData) == 0xB8);
 class CNetGamePlayer : public rage::netPlayer
 {
 public:
-    void* m_unk;
-    CPlayerInfo* m_player_info; //0x00A0
-    uint32_t m_matchmaking_group; //0x0008
-    bool m_is_spectating; //0x000C
-    char pad_00AD[3]; //0x000AD
-    uint64_t unk_00B0; //0x00B0
-    char unk_00B8; //0x00B8
-    char pad_00B9[3]; //0x00B9
-    uint32_t unk_00BC; //0x00BC
-    uint32_t unk_00C0; //0x00C0
-    char pad_00C4[4]; //0x00C4
-    ClanData m_clan_data; //0x00C8
-    char m_crew_rank_title[25]; //0x0180
-    bool m_is_rockstar_dev; //0x0199
-    bool m_is_rockstar_qa; //0x019A
-    bool m_is_cheater; //0x019B
-    uint32_t unk_019C; //0x019C
-    uint16_t unk_01A0; //0x01A0
-    char unk_01A2; //0x01A2
-    char pad_01A3; //0x01A3
-    uint32_t m_phone_explosion_vehicle_net_id; //0x01A4
-    uint16_t unk_01A8; //0x01A8
-    bool m_has_started_transition; //0x01AA
-    char pad_01AB[5]; //0x01AB
-    rage::rlSessionInfo m_transition_session_info; //0x01A3
-    char pad_022D[16]; //0x022D
-    void* m_unk2;
-    uint64_t unk_0230; //0x0230
-    uint64_t unk_0238; //0x0238
-    uint32_t m_mute_count; //0x0240
-    uint32_t m_mute_talkers_count; //0x0244
-    char pad_0248[5]; //0x0248
-    bool m_have_communication_privileges; //0x024D
-    uint16_t unk_024E; //0x024E
-    uint16_t unk_0250; //0x0250
-    char pad_0252[2]; //0x0252
-    uint32_t m_cheat_report_ids[20]; //0x0254
-    uint32_t m_num_cheat_reports; //0x02A4
-    uint8_t unk_02A8; //0x02A8
-    char pad_02A9[3]; //0x02A9
-    uint32_t unk_02AC; //0x02AC
-    char unk_02B0; //0x02B0
-    char pad_02B1[3]; //0x02B1
-    uint32_t unk_02B4; //0x02B4
-    uint32_t m_account_id; //0x02B4
-    uint32_t m_unk_02BC; //0x02BC
+	void* m_unk;
+	CPlayerInfo* m_player_info; //0x00A0
+	uint32_t m_matchmaking_group; //0x0008
+	bool m_is_spectating; //0x000C
+	char pad_00AD[3]; //0x000AD
+	uint64_t unk_00B0; //0x00B0
+	char unk_00B8; //0x00B8
+	char pad_00B9[3]; //0x00B9
+	uint32_t unk_00BC; //0x00BC
+	uint32_t unk_00C0; //0x00C0
+	char pad_00C4[4]; //0x00C4
+	ClanData m_clan_data; //0x00C8
+	char m_crew_rank_title[25]; //0x0180
+	bool m_is_rockstar_dev; //0x0199
+	bool m_is_rockstar_qa; //0x019A
+	bool m_is_cheater; //0x019B
+	uint32_t unk_019C; //0x019C
+	uint16_t unk_01A0; //0x01A0
+	char unk_01A2; //0x01A2
+	char pad_01A3; //0x01A3
+	uint32_t m_phone_explosion_vehicle_net_id; //0x01A4
+	uint16_t unk_01A8; //0x01A8
+	bool m_has_started_transition; //0x01AA
+	char pad_01AB[5]; //0x01AB
+	rage::rlSessionInfo m_transition_session_info; //0x01A3
+	char pad_022D[16]; //0x022D
+	void* m_unk2;
+	uint64_t unk_0230; //0x0230
+	uint64_t unk_0238; //0x0238
+	uint32_t m_mute_count; //0x0240
+	uint32_t m_mute_talkers_count; //0x0244
+	char pad_0248[5]; //0x0248
+	bool m_have_communication_privileges; //0x024D
+	uint16_t unk_024E; //0x024E
+	uint16_t unk_0250; //0x0250
+	char pad_0252[2]; //0x0252
+	uint32_t m_cheat_report_ids[20]; //0x0254
+	uint32_t m_num_cheat_reports; //0x02A4
+	uint8_t unk_02A8; //0x02A8
+	char pad_02A9[3]; //0x02A9
+	uint32_t unk_02AC; //0x02AC
+	char unk_02B0; //0x02B0
+	char pad_02B1[3]; //0x02B1
+	uint32_t unk_02B4; //0x02B4
+	uint32_t m_account_id; //0x02B4
+	uint32_t m_unk_02BC; //0x02BC
 }; //Size: 0x02C0
 static_assert(sizeof(CNetGamePlayer) == 0x330);
 #pragma pack(pop)
@@ -5698,7 +5667,6 @@ public:
 }; //Size: 0x0040
 class CGameScriptHandlerMgr : public rage::scriptHandlerMgr
 {
-public:
 };
 
 class CScriptParticipant
@@ -5916,7 +5884,6 @@ public:
 	{
 	};
 
-public:
 	uint32_t m_build_type; //0x0008
 	uint32_t m_discriminator; //0x000C
 	uint32_t m_discriminator_mapping; //0x0010

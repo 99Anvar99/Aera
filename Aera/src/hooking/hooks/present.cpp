@@ -13,5 +13,6 @@ HRESULT hooks::present(IDXGISwapChain* swap_chain, UINT sync_interval, UINT flag
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 	}
-	return g_hooking->m_DX.get_original<decltype(&present)>(g_swapchain_present_index)(swap_chain, sync_interval, flags);
+	return g_hooking->m_DX.get_original<decltype(&present
+	)>(g_swapchain_present_index)(swap_chain, sync_interval, flags);
 }

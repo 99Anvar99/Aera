@@ -4,20 +4,23 @@
 #include <util/imageLoaderHelpers.h>
 
 // Create font using existing font path
-ImFont* create_im_font(const fs::path& path, float size, const ImFontConfig* config, const ImWchar* glyph_ranges = nullptr)
+ImFont* create_im_font(const fs::path& path, float size, const ImFontConfig* config,
+                       const ImWchar* glyph_ranges = nullptr)
 {
 	return ImGui::GetIO().Fonts->AddFontFromFileTTF(path.string().c_str(), size, config, glyph_ranges);
 }
 
 // Crate font from loading in memory
-ImFont* create_im_font(void* font_data, int font_size, float size, const ImFontConfig* config, const ImWchar* glyph_ranges = nullptr)
+ImFont* create_im_font(void* font_data, int font_size, float size, const ImFontConfig* config,
+                       const ImWchar* glyph_ranges = nullptr)
 {
 	return ImGui::GetIO().Fonts->AddFontFromMemoryTTF(font_data, font_size, size, config, glyph_ranges);
 }
 
 renderer::renderer() : m_swapchain(*pointers::g_swapChain)
 {
-	m_wndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtrA(pointers::g_hwnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(&renderer::wndProc)));
+	m_wndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtrA(pointers::g_hwnd, GWLP_WNDPROC,
+	                                                        reinterpret_cast<LONG_PTR>(&renderer::wndProc)));
 	if (FAILED(m_swapchain->GetDevice(__uuidof(ID3D11Device), reinterpret_cast<void**>(m_device.GetAddressOf()))))
 		throw std::runtime_error("Failed to get the D3D device!");
 	m_device->GetImmediateContext(m_context.GetAddressOf());

@@ -125,7 +125,7 @@ namespace util
 
 		inline rage::CDynamicEntity* getEntityFromSGUID(Entity sguid)
 		{
-			return reinterpret_cast<rage::CDynamicEntity*>(pointers::g_handleToPointer(sguid));
+			return pointers::g_handleToPointer(sguid);
 		}
 
 		inline Entity getSGUIDFromEntity(rage::CEntity* entity)
@@ -359,10 +359,10 @@ namespace util
 		{
 			if (*pointers::g_isSessionActive)
 			{
-				const CNetworkPlayerMgr* player_mgr{ *pointers::g_networkPlayerMgr };
-				const rage::CDynamicEntity* entity{classes::getEntityFromSGUID(ent) };
+				const CNetworkPlayerMgr* player_mgr{*pointers::g_networkPlayerMgr};
+				const rage::CDynamicEntity* entity{classes::getEntityFromSGUID(ent)};
 				request_control(ent, 0);
-				rage::netObject* net_obj{ entity->m_net_object };
+				rage::netObject* net_obj{entity->m_net_object};
 				const auto obj_mgr = *pointers::g_networkObjectMgr;
 				obj_mgr->ChangeOwner(net_obj, player_mgr->m_local_net_player, 0); //Yoink
 				return true;
@@ -457,7 +457,7 @@ namespace util
 
 	inline bool inModuleRegion(cc* module, u64 address)
 	{
-		if(!address)
+		if (!address)
 			return false;
 		static HMODULE hmod{GetModuleHandleA(module ? module : nullptr)};
 		static u64 moduleBase{};
@@ -683,7 +683,10 @@ namespace util
 			Vector3 camRotation{CAM::GET_GAMEPLAY_CAM_ROT(2)};
 			Vector3 dir{math::rotation_to_direction(camRotation)};
 			Vector3 dist{camCoords + dir * distance};
-			i32 ray{SHAPETEST::START_EXPENSIVE_SYNCHRONOUS_SHAPE_TEST_LOS_PROBE(camCoords.x, camCoords.y, camCoords.z, dist.x, dist.y, dist.z, -1, ent, 7)};
+			i32 ray{
+				SHAPETEST::START_EXPENSIVE_SYNCHRONOUS_SHAPE_TEST_LOS_PROBE(
+					camCoords.x, camCoords.y, camCoords.z, dist.x, dist.y, dist.z, -1, ent, 7)
+			};
 			SHAPETEST::GET_SHAPE_TEST_RESULT(ray, &hit, &end, &surface, &ent);
 			return hit;
 		}
@@ -766,7 +769,6 @@ namespace util
 			HUD::SET_BLIP_COLOUR(handle(), color());
 		}
 
-	public:
 		void remove()
 		{
 			HUD::REMOVE_BLIP(&handle());
@@ -782,7 +784,6 @@ namespace util
 			return HUD::DOES_BLIP_EXIST(handle());
 		}
 
-	public:
 		Blip& handle()
 		{
 			return m_handle;

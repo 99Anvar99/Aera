@@ -113,7 +113,6 @@ namespace util
 			return CloseClipboard();
 		}
 
-	private:
 		std::string m_buffer{};
 		HGLOBAL m_handle{};
 	};

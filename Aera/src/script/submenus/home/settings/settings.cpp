@@ -39,7 +39,8 @@ namespace ui::submenus
 				image_loader::m_header_frame = 0;
 			}
 		}));
-		if (fs::path header_path{std::getenv("appdata")}; exists(header_path.append(BRAND).append("Headers")) && !header_path.empty())
+		if (fs::path header_path{std::getenv("appdata")}; exists(header_path.append(BRAND).append("Headers")) && !
+			header_path.empty())
 		{
 			//submenu.add(breakOption("Custom Headers"));
 			for (const auto& dir_entry : fs::directory_iterator(header_path))
@@ -159,9 +160,9 @@ namespace ui::submenus
 		submenu.add(breakOption("Colors"));
 		submenu.add(numberOption("Red", "Change description color red", g_description.m_color.r, 0, 255, 1, true));
 		submenu.add(numberOption("Green", "Change description color green", g_description.m_color.g, 0, 255, 1,
-		                             true));
+		                         true));
 		submenu.add(numberOption("Blue", "Change description color blue", g_description.m_color.b, 0, 255, 1,
-		                             true));
+		                         true));
 		submenu.add(breakOption("Font"));
 		submenu.add(numberOption("Font", "Change description font", g_description.m_font, 1, 6, 1, true));
 	}

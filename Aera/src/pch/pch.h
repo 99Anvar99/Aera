@@ -123,7 +123,8 @@ namespace defines
 	}
 
 	template <typename T>
-	float to_fixed(T number, int amount) {
+	float to_fixed(T number, int amount)
+	{
 		float multiplier = std::pow(10.0f, static_cast<float>(amount));
 		return std::round(number * multiplier) / multiplier;
 	}
@@ -204,6 +205,7 @@ namespace defines
 		return std::ranges::any_of(str, [](const char c) { return std::isalpha(c); });
 	}
 }
+
 using namespace defines;
 
 namespace fs = std::filesystem;

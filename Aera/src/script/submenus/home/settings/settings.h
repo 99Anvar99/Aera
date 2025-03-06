@@ -12,7 +12,6 @@ namespace ui::submenus
 {
 	class settingsSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -25,7 +24,6 @@ namespace ui::submenus
 	//Header
 	class headerSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -38,7 +36,6 @@ namespace ui::submenus
 	//subtitle
 	class subtitleSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -51,7 +48,6 @@ namespace ui::submenus
 	//options
 	class optionsSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -64,7 +60,6 @@ namespace ui::submenus
 	//footer
 	class footerSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -77,7 +72,6 @@ namespace ui::submenus
 	//description
 	class descriptionSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

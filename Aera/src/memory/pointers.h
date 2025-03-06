@@ -21,13 +21,18 @@ namespace pointers
 		using cTaskJumpConstructor = void* (*)(u64 _This, u32 Flags);
 		using cTaskFallConstructor = void* (*)(u64 _This, u32 Flags);
 		using scGetGameInfoIndex = int(*)(const char* StringId, u64 Unk, u32 GameId);
-		using joinBySessionInfo = bool(*)(CNetwork* Network, rage::rlSessionInfo* Info, i32 Unk, i32 Flags, rage::rlGamerHandle* Handles, i32 HandleCount);
-		using getGamerTaskResult = bool(*)(i32 ProfileIndex, rage::rlGamerHandle* pHandles, i32 Count, rage::rlSessionByGamerTaskResult* pResult, i32 Unk, bool* pSuccess, rage::rlTaskStatus* pStatus);
-		using getNativeHandler = rage::scrNativeHandler(*)(rage::scrNativeRegistrationTable* registration_table, rage::scrNativeHash hash);
+		using joinBySessionInfo = bool(*)(CNetwork* Network, rage::rlSessionInfo* Info, i32 Unk, i32 Flags,
+		                                  rage::rlGamerHandle* Handles, i32 HandleCount);
+		using getGamerTaskResult = bool(*)(i32 ProfileIndex, rage::rlGamerHandle* pHandles, i32 Count,
+		                                   rage::rlSessionByGamerTaskResult* pResult, i32 Unk, bool* pSuccess,
+		                                   rage::rlTaskStatus* pStatus);
+		using getNativeHandler = rage::scrNativeHandler(*)(rage::scrNativeRegistrationTable* registration_table,
+		                                                   rage::scrNativeHash hash);
 		using get_gxt_label_from_table_t = cc * (*)(void* This, cc* label);
 		using get_joaated_gxt_label_from_table_t = cc * (*)(void* This, u32 hash);
 		using request_control = void(*)(rage::netObject* net_object);
 	}
+
 	inline types::cRunGtaThread g_runGtaThread{};
 	inline types::scrThreadInit g_scrThreadInit{};
 	inline types::scrThreadTick g_scrThreadTick{};

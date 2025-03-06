@@ -42,7 +42,8 @@ public:
 		if (status != MH_ERROR_NOT_INITIALIZED && status != MH_ERROR_UNSUPPORTED_FUNCTION && status !=
 			MH_ERROR_MEMORY_ALLOC && status != MH_ERROR_MEMORY_PROTECT)
 		{
-			if (const std::optional<LPVOID> corrected_target{get_corrected_target<T>(target)}; corrected_target.has_value())
+			if (const std::optional<LPVOID> corrected_target{get_corrected_target<T>(target)}; corrected_target.
+				has_value())
 			{
 				status = MH_CreateHook(corrected_target.value(), static_cast<LPVOID>(detour),
 				                       static_cast<LPVOID*>(&original));
@@ -83,7 +84,8 @@ public:
 class detour
 {
 public:
-	detour(cc* name, void* ptr, void* dtr, bool hook = true) : m_name(name), m_dtr(dtr), m_ptr(ptr), m_og(ptr), m_hook(hook)
+	detour(cc* name, void* ptr, void* dtr, bool hook = true) : m_name(name), m_dtr(dtr), m_ptr(ptr), m_og(ptr),
+	                                                           m_hook(hook)
 	{
 		if (m_hook)
 		{

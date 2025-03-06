@@ -12,7 +12,6 @@ namespace ui::submenus::players
 {
 	class selectedPlayerSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

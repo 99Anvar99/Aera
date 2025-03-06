@@ -86,7 +86,6 @@ namespace commands
 			abstractCommand::run();
 		}
 
-	public:
 		typedValue m_value{};
 
 	private:
@@ -120,7 +119,6 @@ namespace commands
 			abstractCommand::~abstractCommand();
 		}
 
-	public:
 		void init() override
 		{
 			push_value(m_value);
@@ -136,7 +134,6 @@ namespace commands
 			abstractCommand::run();
 		}
 
-	public:
 		typedValue m_value{};
 
 	private:
@@ -169,7 +166,6 @@ namespace commands
 			abstractCommand::~abstractCommand();
 		}
 
-	public:
 		void init() override
 		{
 			push_value(m_toggleValue);
@@ -190,7 +186,6 @@ namespace commands
 			abstractCommand::run();
 		}
 
-	public:
 		typedValue m_toggleValue{};
 		typedValue m_numberValue{};
 
@@ -225,7 +220,6 @@ namespace commands
 			abstractCommand::~abstractCommand();
 		}
 
-	public:
 		void init() override
 		{
 			push_value(m_value);
@@ -241,7 +235,6 @@ namespace commands
 			abstractCommand::run();
 		}
 
-	public:
 		typedValue m_value{};
 
 	private:
@@ -274,7 +267,6 @@ namespace commands
 			abstractCommand::~abstractCommand();
 		}
 
-	public:
 		void init() override
 		{
 			push_value(m_toggleValue);
@@ -295,7 +287,6 @@ namespace commands
 			abstractCommand::run();
 		}
 
-	public:
 		typedValue m_toggleValue{};
 		typedValue m_numberValue{};
 
@@ -329,7 +320,6 @@ namespace commands
 			abstractCommand::~abstractCommand();
 		}
 
-	public:
 		void init() override
 		{
 			abstractCommand::init();

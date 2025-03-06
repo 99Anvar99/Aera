@@ -7,7 +7,7 @@ namespace util
 
 	constexpr bool isCharacterBase64(u8 c)
 	{
-		return g_base64Charaters.find(c) != std::string_view::npos ? true : false;
+		return g_base64Charaters.find(c) != std::string_view::npos;
 	}
 
 	inline std::string base64Encode(const std::string& str)

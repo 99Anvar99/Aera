@@ -453,14 +453,11 @@ namespace commands
 			{
 				return static_cast<t>(stod(str));
 			}
-			else if (str.find("0x") != std::string::npos || str.find("0X") != std::string::npos)
+			if (str.find("0x") != std::string::npos || str.find("0X") != std::string::npos)
 			{
 				return static_cast<t>(stoull(str));
 			}
-			else
-			{
-				return static_cast<t>(stod(str));
-			}
+			return static_cast<t>(stod(str));
 		}
 
 		auto it = bool_map.find(str);

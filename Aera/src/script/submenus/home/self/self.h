@@ -12,7 +12,6 @@ namespace ui::submenus
 {
 	class selfSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

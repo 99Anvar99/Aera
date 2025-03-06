@@ -11,7 +11,6 @@ namespace ui
 		{
 		}
 
-	public:
 		static menuInstance<t>* get(std::string name, fnptr<void(submenu&)> callback)
 		{
 			static std::shared_ptr<menuInstance<t>> instance{};

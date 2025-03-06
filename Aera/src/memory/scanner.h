@@ -110,7 +110,8 @@ class scanner
 {
 public:
 	scanner(std::string name, std::string pattern, const hmodule& module = {}) :
-		m_name(std::move(name)), m_pattern(std::move(pattern)), m_module(module), m_elements(createBytesFromString(m_pattern))
+		m_name(std::move(name)), m_pattern(std::move(pattern)), m_module(module),
+		m_elements(createBytesFromString(m_pattern))
 	{
 	}
 

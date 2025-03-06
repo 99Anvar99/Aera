@@ -43,9 +43,9 @@ public:
 	static void routine(PVOID param)
 	{
 		const auto f{static_cast<fiber*>(param)};
-		
+
 		f->m_func();
-		
+
 		while (true)
 		{
 			f->sleep();

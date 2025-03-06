@@ -13,7 +13,6 @@ namespace ui::submenus
 {
 	class playersSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:

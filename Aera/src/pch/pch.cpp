@@ -26,15 +26,15 @@ void stackWalker::OnDbgHelpErr(LPCSTR szFuncName, DWORD gle, DWORD64 addr)
 
 void stackWalker::OnCallstackEntry(CallstackEntryType eType, CallstackEntry& entry)
 {
-    HMODULE game_hmod = GetModuleHandleA(nullptr);
-    
-    const char* module_type = entry.moduleName == "GTA5" ? "exe" : "dll";
-    u64 base_offset = entry.moduleName == "GTA5" ? reinterpret_cast<u64>(game_hmod) : 0;
-    u64 adjusted_offset = entry.offset - base_offset;
+	HMODULE game_hmod = GetModuleHandleA(nullptr);
 
-    std::string moduleNameStr = entry.moduleName;
-    std::string offsetStr = std::format("{}.{}+0x{:X}", moduleNameStr, module_type, adjusted_offset);
-    #ifdef DEBUG
+	const char* module_type = entry.moduleName == "GTA5" ? "exe" : "dll";
+	u64 base_offset = entry.moduleName == "GTA5" ? reinterpret_cast<u64>(game_hmod) : 0;
+	u64 adjusted_offset = entry.offset - base_offset;
+
+	std::string moduleNameStr = entry.moduleName;
+	std::string offsetStr = std::format("{}.{}+0x{:X}", moduleNameStr, module_type, adjusted_offset);
+#ifdef DEBUG
 	if (entry.lineFileName[0])
 	{
 		if (entry.name[0])
@@ -64,4 +64,3 @@ void stackWalker::OnCallstackEntry(CallstackEntryType eType, CallstackEntry& ent
 	}
 #endif
 }
-

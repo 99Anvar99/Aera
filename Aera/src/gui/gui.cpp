@@ -51,7 +51,7 @@ namespace ui
 				m_textJustify,
 				2.1f,
 				g_width
-			);	
+			);
 		}
 		g_base += m_size;
 	}

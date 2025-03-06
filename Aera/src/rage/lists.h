@@ -295,7 +295,6 @@ public:
 		return id;
 	}
 
-public:
 	u32 id{};
 };
 

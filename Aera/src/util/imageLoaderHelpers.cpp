@@ -51,7 +51,8 @@ namespace image_loader
 		}
 		int* delays = nullptr;
 		int width, height, frame_count, comp;
-		const auto data = stbi_load_gif_from_memory(reinterpret_cast<stbi_uc*>(buffer.data()), (int)size, &delays, &width,
+		const auto data = stbi_load_gif_from_memory(reinterpret_cast<stbi_uc*>(buffer.data()), (int)size, &delays,
+		                                            &width,
 		                                            &height, &frame_count, &comp, 0);
 		if (!data)
 		{
@@ -133,7 +134,9 @@ namespace image_loader
 		if (ui::g_open && m_has_header_loaded)
 		{
 			flip_through_frames(m_header[m_header_frame].frame_delay);
-			ui::drawing::image(m_header[m_header_frame].res_view, {ui::g_pos.x, ui::g_pos.y + ui::g_header.m_size / 2.f}, {ui::g_width, ui::g_header.m_size}, ui::g_options.m_textColor);
+			ui::drawing::image(m_header[m_header_frame].res_view,
+			                   {ui::g_pos.x, ui::g_pos.y + ui::g_header.m_size / 2.f},
+			                   {ui::g_width, ui::g_header.m_size}, ui::g_options.m_textColor);
 		}
 	}
 }

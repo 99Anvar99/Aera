@@ -12,7 +12,6 @@ namespace ui::submenus
 {
 	class spawnerSubmenu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -24,7 +23,6 @@ namespace ui::submenus
 
 	class homeSpawnerVehicle
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -36,7 +34,6 @@ namespace ui::submenus
 
 	class selectedVehicleSpawnerSubmenmu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
@@ -48,7 +45,6 @@ namespace ui::submenus
 
 	class finalselectedVehicleSpawnerSubmenmu
 	{
-	private:
 		static void init(submenu& submenu);
 
 	public:
