@@ -37,14 +37,9 @@ namespace ui
 
 		void action(eActionType type) override
 		{
-			switch (type)
+			if (type == eActionType::Enter)
 			{
-			case eActionType::Enter:
-				{
-					menu::push(m_submenu);
-				}
-				break;
-			default: ;
+				menu::push(m_submenu);
 			}
 			baseOption::action(type);
 		}

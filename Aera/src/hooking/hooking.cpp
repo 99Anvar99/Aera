@@ -2,7 +2,6 @@
 #include "memory/pointers.h"
 
 hooking::hooking() :
-	m_minhook(),
 	m_DX(VFT({*pointers::g_swapChain, g_swapchain_num_funcs}), VFT({
 		     VFTFunctionData(&hooks::present, g_swapchain_present_index),
 		     VFTFunctionData(&hooks::resize_buffers, g_swapchain_resizebuffers_index)

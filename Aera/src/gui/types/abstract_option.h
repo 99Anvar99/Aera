@@ -27,7 +27,7 @@ namespace ui
 	class abstractOption
 	{
 	public:
-		abstractOption(std::string& name, std::string& description) : m_name(name), m_description(description)
+		abstractOption(const std::string& name, const std::string& description) : m_name(name), m_description(description)
 		{
 		}
 

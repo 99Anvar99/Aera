@@ -1,5 +1,4 @@
 #pragma once
-#include "submenu_option.h"
 #include "util/player_mgr.h"
 #include "script/submenus/home/network/players/selected_player.h"
 
@@ -29,15 +28,11 @@ namespace ui
 
 		void action(eActionType type) override
 		{
-			switch (type)
+			if (type == eActionType::Enter)
 			{
-			case eActionType::Enter:
-				{
-					m_submenu->m_name = m_player.m_name;
-					g_selectedPlayer = m_player.m_index;
-					menu::push(m_submenu);
-				}
-				break;
+				m_submenu->m_name = m_player.m_name;
+				g_selectedPlayer = m_player.m_index;
+				menu::push(m_submenu);
 			}
 			baseOption::action(type);
 		}

@@ -6,12 +6,12 @@ namespace ui
 	class toggleOption : public baseOption
 	{
 	public:
-		toggleOption(std::string name, std::string description, bool& toggle,
+		toggleOption(const std::string& name, const std::string& description, bool& toggle,
 		             fnptr<void()> action = nullptr) : baseOption(name, description, action), m_toggle(&toggle)
 		{
 		}
 
-		toggleOption(std::string name, bool& toggle, fnptr<void()> action = nullptr) : toggleOption(
+		toggleOption(const std::string& name, bool& toggle, const fnptr<void()> action = nullptr) : toggleOption(
 			name, std::string(), toggle, action)
 		{
 		}
@@ -41,13 +41,9 @@ namespace ui
 
 		void action(eActionType type) override
 		{
-			switch (type)
+			if (type == eActionType::Enter)
 			{
-			case eActionType::Enter:
-				{
-					*m_toggle ^= true;
-				}
-				break;
+				*m_toggle ^= true;
 			}
 			baseOption::action(type);
 		}

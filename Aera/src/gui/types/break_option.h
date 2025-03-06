@@ -6,7 +6,7 @@ namespace ui
 	class breakOption : public baseOption
 	{
 	public:
-		breakOption(std::string name) :
+		breakOption(const std::string& name) :
 			baseOption(name, {}, {})
 		{
 		}
@@ -18,7 +18,7 @@ namespace ui
 
 		void draw(bool selected) override
 		{
-			drawing::rectangle({g_pos.x, g_base + (g_options.m_size / 2.f)}, {g_width, g_options.m_size},
+			drawing::rectangle({g_pos.x, g_base + g_options.m_size / 2.f}, {g_width, g_options.m_size},
 			                   g_options.m_color, true);
 			drawing::text(
 				g_options.m_breakFont,

@@ -25,9 +25,8 @@ namespace ui
 
 		void action(const eActionType type)
 		{
-			switch (type)
+			if (type == eActionType::Up)
 			{
-			case eActionType::Up:
 				if (m_current > 0)
 				{
 					u64 offset = m_options.at(m_current - 1)->type() == static_cast<u32>(eOptionTypes::Break) ? 2 : 1;
@@ -37,8 +36,9 @@ namespace ui
 				{
 					m_current = m_options.size() - 1;
 				}
-				break;
-			case eActionType::Down:
+			}
+			if (type == eActionType::Down)
+			{
 				if (m_current < m_options.size() - 1)
 				{
 					u64 offset = m_options.at(m_current + 1)->type() == static_cast<u32>(eOptionTypes::Break) ? 2 : 1;
@@ -48,7 +48,6 @@ namespace ui
 				{
 					m_current = m_options.at(0)->type() == static_cast<u32>(eOptionTypes::Break) ? 1 : 0;
 				}
-				break;
 			}
 			adjust_scroll_position();
 			m_options[m_current]->action(type);

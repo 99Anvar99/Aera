@@ -6,12 +6,12 @@ namespace ui
 	class option : public baseOption
 	{
 	public:
-		option(std::string name, std::string description, std::function<void()> action = {}) :
+		option(const std::string& name, const std::string& description, const std::function<void()>& action = {}) :
 			baseOption(name, description, action)
 		{
 		}
 
-		option(std::string name, std::function<void()> action = {}) :
+		option(const std::string& name, const std::function<void()>& action = {}) :
 			option(name, {}, action)
 		{
 		}

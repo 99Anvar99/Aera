@@ -7,8 +7,8 @@ namespace ui
 	class vectorOption : public baseOption
 	{
 	public:
-		vectorOption(std::string name, std::string description, std::vector<t> value, i64& pos, bool onChange = false,
-		             fnptr<void()> action = nullptr) : baseOption(name, description, action), m_value(value),
+		vectorOption(const std::string& name, const std::string& description, std::vector<t> value, i64& pos, bool onChange = false,
+		             fnptr<void()> action = nullptr) : baseOption(name, description, action), m_value(std::move(value)),
 		                                               m_pos(&pos), m_onChange(onChange)
 		{
 		}
@@ -51,35 +51,34 @@ namespace ui
 		{
 			bool run{};
 			i64& pos{*m_pos};
-			switch (type)
+
+			if (type == eActionType::Left)
 			{
-			case eActionType::Left:
+				run = true;
+				if (pos > 0)
 				{
-					run = true;
-					if (pos > 0)
-					{
-						pos--;
-					}
-					else
-					{
-						pos = static_cast<i64>(m_value.size() - 1);
-					}
+					pos--;
 				}
-				break;
-			case eActionType::Right:
+				else
 				{
-					run = true;
-					if (!m_value.empty())
-					{
-						pos = (pos + 1) % m_value.size();
-					}
+					pos = static_cast<i64>(m_value.size() - 1);
 				}
-				break;
 			}
+
+			if (type == eActionType::Right)
+			{
+				run = true;
+				if (!m_value.empty())
+				{
+					pos = (pos + 1) % m_value.size();
+				}
+			}
+
 			if (m_onChange && run)
 			{
 				invoke();
 			}
+
 			baseOption::action(type);
 		}
 
