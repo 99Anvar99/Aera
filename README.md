@@ -12,7 +12,7 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/99Anvar99/Aera?color=dark-green) ![Forks](https://img.shields.io/github/forks/99Anvar99/Aera?style=social) ![Stargazers](https://img.shields.io/github/stars/99Anvar99/Aera?style=social) ![Issues](https://img.shields.io/github/issues/99Anvar99/Aera) ![License](https://img.shields.io/github/license/99Anvar99/Aera) 
+![Contributors](https://img.shields.io/github/contributors/99Anvar99/Aera?color=dark-green) ![Forks](https://img.shields.io/github/forks/99Anvar99/Aera?style=social) ![Stargazers](https://img.shields.io/github/stars/99Anvar99/Aera?style=social) ![Issues](https://img.shields.io/github/issues/99Anvar99/Aera)
 
 ## Works on GTA version (1.70 | 3442)
 
