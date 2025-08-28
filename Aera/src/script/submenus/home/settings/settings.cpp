@@ -51,12 +51,7 @@ namespace ui::submenus
 						std::format("Load {}", dir_entry.path().filename().string()),
 						[path = dir_entry.path()]
 						{
-							if (!exists(path))
-							{
-								return;
-							}
-
-							if (image_loader::texture_loading_in_progress)
+							if (!exists(path) || image_loader::texture_loading_in_progress)
 							{
 								return;
 							}
@@ -67,6 +62,7 @@ namespace ui::submenus
 								image_loader::m_has_header_loaded = false;
 								image_loader::m_header.clear();
 								image_loader::m_header_frame = 0;
+								g_header.m_text = std::format("Loading: {}", path.filename().string());
 
 								if (path.extension() == ".gif")
 								{
@@ -74,11 +70,12 @@ namespace ui::submenus
 								}
 								else
 								{
-									image_loader::m_header.try_emplace(0, 0, image_loader::create_texture(path));
+									image_loader::m_header.emplace_back(image_loader::frame_data{.frame_delay = 0, .res_view = image_loader::create_texture(path)});
 								}
 
 								image_loader::m_has_header_loaded = true;
 								image_loader::texture_loading_in_progress = false;
+								g_header.m_text = BRAND;
 							});
 						}
 					));

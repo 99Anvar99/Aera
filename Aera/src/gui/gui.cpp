@@ -114,28 +114,38 @@ namespace ui
 
 	void footer::draw()
 	{
-		if (!m_enabled)
-			return;
-		float size{m_spriteSize};
-		if (IS_STACK_VALID && default_sprite())
-		{
-			if (OPTION_INDEX == 0 || OPTION_INDEX + 1 == OPTION_COUNT)
-			{
-				constexpr float scale_factor = 1.f;
-				m_sprite.m_texture = "arrowright";
-				m_sprite.m_rotation = OPTION_INDEX == 0 ? 360.f : -180.f;
-				size *= scale_factor;
-			}
-			else
-			{
-				m_sprite.m_texture = "shop_arrows_upanddown";
-				m_sprite.m_rotation = 0.f;
-				size *= 0.7f;
-			}
-		}
-		drawing::rectangle({g_pos.x, g_base + m_size / 2.f}, {g_width, m_size}, m_color);
-		drawing::image(m_sprite, {g_pos.x, g_base + m_size / 2.f}, {size, size}, m_spriteColor);
-		g_base += m_size;
+	    if (!m_enabled)
+	        return;
+
+	    float size = m_spriteSize;
+
+	    if (IS_STACK_VALID && default_sprite())
+	    {
+	        if (OPTION_INDEX == 0 || OPTION_INDEX + 1 == OPTION_COUNT)
+	        {
+	            m_sprite.m_texture  = "arrowright";
+	            m_sprite.m_rotation = OPTION_INDEX == 0 ? 360.f : -180.f;
+	        }
+	        else
+	        {
+	            m_sprite.m_texture  = "shop_arrows_upanddown";
+	            m_sprite.m_rotation = 0.f;
+	            size *= 0.7f; // shrink only in this case
+	        }
+	    }
+
+	    // Compute scroll once and reuse
+	    const float scroll_position = g_base + g_footer.m_size * 0.5f;
+	    const float scroll_speed    = g_options.m_scrollSpeed * 0.1f; 
+
+	    static lerping_float scroll(scroll_position, scroll_speed);
+	    const float scroll_y = scroll.set_target(scroll_position).update(scroll_speed).get_current();
+
+	    // Draw footer background and sprite
+	    drawing::rectangle({ g_pos.x, scroll_y }, { g_width, m_size }, m_color);
+	    drawing::image(m_sprite, { g_pos.x, scroll_y }, { size, size }, m_spriteColor);
+
+	    g_base += m_size;
 	}
 
 	void description::draw()

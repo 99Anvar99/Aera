@@ -3,7 +3,6 @@
 #include "rage/classes.h"
 #include "gui/types/submenu.h"
 #include "gui/types.h"
-#include "gui/menu_handler.h"
 
 namespace helpers
 {

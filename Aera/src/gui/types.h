@@ -114,7 +114,7 @@ namespace ui
 		{
 		}
 
-		static void draw();
+		void draw();
 
 		color rect(bool selected)
 		{
