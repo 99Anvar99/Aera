@@ -28,14 +28,13 @@
 ---
 
 ## 📑 Table of Contents
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Authors](#authors)
-- [Credits](#credits)
+- [About the Project](#-about-the-project)
+- [Features](#-features)
+- [Getting Started](#-getting-started)
+- [Usage](#-usage)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Authors](#-authors)
 
 ---
 
@@ -96,8 +95,3 @@ This project is licensed under the [LICENSE](LICENSE).
 ## 👥 Authors
 - **Vali**  
 - **99Anvar99**
-
----
-
-## 🙏 Credits
-- Original base by [Lightning-X/Aera](https://github.com/Lightning-X/Aera)
